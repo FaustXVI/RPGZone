@@ -32,6 +32,7 @@ rpgZone.controller('CharacterController', function ($scope, $location, $resource
 
     var saveCurrentId = function (result) {
         $currentId = result._id;
+        $location.search({'id' : $currentId});
         delete result._id;
     };
 
