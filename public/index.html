@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="rpgZone">
+<head>
+    <title>Perso DD</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/rpgzone.css">
+
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/rpgzone.js"></script>
+
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-controller="CharacterController" class="container">
+<form ng-submit="submit()" role="form" class="form-horizontal">
+    <section>
+        <h1>Id</h1>
+
+        <div class="form-group">
+            <label for="name" class="col-xs-3">Nom</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="name" class="form-control" ng-model="character.name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="class" class="col-xs-3">Classe</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="class" class="form-control" ng-model="character.class"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="race" class="col-xs-3">Race</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="race" class="form-control" ng-model="character.race"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="level" class="col-xs-3">Niveau</label>
+
+            <div class="col-xs-3">
+                <input type="number" name="level" class="form-control" ng-model="character.level"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-xs-3">Genre</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="gender" class="form-control" ng-model="character.gender"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="alignment" class="col-xs-3">Alignement</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="alignment" class="form-control" ng-model="character.alignment"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="diety" class="col-xs-3">Divinité</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="diety" class="form-control" ng-model="character.diety"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="paragonPath" class="col-xs-3">Voie paragonique</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="paragonPath" class="form-control" ng-model="character.paragonPath"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="playerName" class="col-xs-3">Nom du joueur</label>
+
+            <div class="col-xs-9">
+                <input type="text" name="playerName" class="form-control" ng-model="character.playerName"/>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h1>Ability</h1>
+
+        <div class="form-group">
+            <span class="col-xs-3"></span>
+            <span class="col-xs-3"></span>
+            <span class="col-xs-3">M</span>
+            <span class="col-xs-3">M + ½ lvl</span>
+        </div>
+        <div class="form-group">
+            <label for="strength" class="col-xs-3">Force</label>
+
+            <div class="col-xs-3">
+                <input type="number" name="strength" ng-model="character.strength" class="form-control"/>
+            </div>
+            <span class="col-xs-3">{{ calculateMod(character.strength) }}</span>
+            <span class="col-xs-3">{{ calculateTotalMod( character.strength, character.level) }}</span>
+        </div>
+        <div class="form-group">
+            <label for="constitution" class="col-xs-3">Constitution</label>
+
+            <div class="col-xs-3">
+                <input type="number" name="constitution" ng-model="character.constitution" class="form-control"/>
+            </div>
+            <span class="col-xs-3">{{calculateMod(character.constitution)}}</span>
+            <span class="col-xs-3">{{calculateTotalMod(character.constitution, character.level)}}</span>
+        </div>
+        <div class="form-group">
+            <label for="dexterity" class="col-xs-3">Dexterité</label>
+
+            <div class="col-xs-3">
+                <input type="number" name="dexterity" ng-model="character.dexterity" class="form-control"/>
+            </div>
+            <span class="col-xs-3">{{calculateMod(character.dexterity)}}</span>
+            <span class="col-xs-3">{{calculateTotalMod(character.dexterity, character.level)}}</span>
+        </div>
+        <div class="form-group">
+            <label for="intelligence" class="col-xs-3">Intelligence</label>
+
+            <div class="col-xs-3"><input type="number" name="intelligence" ng-model="character.intelligence"
+                                         class="form-control"/>
+            </div>
+            <span class="col-xs-3">{{calculateMod(character.intelligence)}}</span>
+            <span class="col-xs-3">{{calculateTotalMod(character.intelligence, character.level)}}</span>
+        </div>
+        <div class="form-group">
+            <label for="wisdom" class="col-xs-3">Sagesse</label>
+
+            <div class="col-xs-3">
+                <input type="number" name="wisdom" ng-model="character.wisdom" class="form-control"/>
+            </div>
+            <span class="col-xs-3">{{calculateMod(character.wisdom)}}</span>
+            <span class="col-xs-3">{{calculateTotalMod(character.wisdom, character.level)}}</span>
+        </div>
+        <div class="form-group">
+            <label for="charisma" class="col-xs-3">Charisme</label>
+
+            <div class="col-xs-3">
+                <input type="number" name="charisma" ng-model="character.charisma" class="form-control"/>
+            </div>
+            <span class="col-xs-3">{{calculateMod(character.charisma)}}</span>
+            <span class="col-xs-3">{{calculateTotalMod(character.charisma, character.level)}}</span>
+        </div>
+    </section>
+    <input type="submit"/>
+</form>
+</body>
+</html>
