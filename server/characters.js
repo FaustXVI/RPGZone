@@ -7,7 +7,7 @@ var BSON = mongo.BSONPure;
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('RPGZone', server);
 
-db.open(function(err, db) {
+db.open(function (err) {
     if(!err) {
         console.log("Connected to 'RPGZone' database");
     } else {
@@ -52,6 +52,7 @@ exports.addCharacter = function(req, res) {
 exports.updateCharacter = function(req, res) {
     var id = req.params.id;
     var character = req.body;
+    character._id = new BSON.ObjectID(id);
     console.log('Updating character: ' + id);
     console.log(JSON.stringify(character));
     db.collection('characters', function(err, collection) {
