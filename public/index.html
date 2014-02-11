@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="rpgZone">
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="rpgZone">
 <head>
     <title>Perso DD</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -16,10 +16,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body ng-controller="CharacterListController" class="container">
+<body data-ng-controller="CharacterListController" class="container">
 <div>
     <ul>
-        <li ng-repeat="character in characters"><a ng-href="perso.html?id={{ character._id }}" target="_self">{{
+        <li data-ng-repeat="character in characters"><a data-ng-href="perso.html?id={{ character._id }}" target="_self">{{
             character.playerName }} ({{ character.name }})</a></li>
     </ul>
 </div>
