@@ -8,7 +8,7 @@ rpgZone.factory('CharacterService', function ($resource) {
     return $resource('/characters/:characterId', {characterId: '@_id'}, {update: {method: 'PUT'}});
 });
 
-rpgZone.controller('CharacterController', function ($scope, $location, CharacterService) {
+rpgZone.controller('CharacterController', function ($scope, $location, $window, CharacterService) {
 
     var calculateMod = function (value) {
         if (value) {
@@ -45,9 +45,8 @@ rpgZone.controller('CharacterController', function ($scope, $location, Character
     };
 
     $scope.suppress = function () {
-        CharacterService.delete({ characterId: $currentId }).$promise.then(
-            function () {
-                window.location = "/";
+        $scope.character.$delete(function () {
+                $window.location.href = "/";
             }
         );
     };
