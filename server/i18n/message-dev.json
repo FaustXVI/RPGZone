@@ -1,7 +1,8 @@
-{"home": {
-    "title": "Personnages DD",
-    "button": "Nouveau personnage"
-},
+{
+    "home": {
+        "title": "Personnages DD",
+        "button": "Nouveau personnage"
+    },
     "character": {
         "sheet": "Fiche de personnage",
         "id": "Id",
