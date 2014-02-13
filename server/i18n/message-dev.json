@@ -1,0 +1,29 @@
+{"home": {
+    "title": "Personnages DD",
+    "button": "Nouveau personnage"
+},
+    "character": {
+        "sheet": "Fiche de personnage",
+        "id": "Id",
+        "name": "Nom",
+        "class": "Class",
+        "race": "Race",
+        "level": "Niveau",
+        "gender": "Genre",
+        "alignment": "Alignement",
+        "diety": "Divinité",
+        "paragonPath": "Voie parangonique",
+        "playerName": "Nom du jouer",
+        "ability": "Aptitudes",
+        "mod": "Mod.",
+        "modAndLevel": "Mod. + ½ lvl",
+        "strength": "Force",
+        "constitution": "Constitution",
+        "dexterity": "Dexterity",
+        "intelligence": "Intelligence",
+        "wisdom": "Sagesse",
+        "charisma": "Charisme",
+        "save": "Sauvegarder",
+        "delete": "Supprimer la fiche"
+    }
+}

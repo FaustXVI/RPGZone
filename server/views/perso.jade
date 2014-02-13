@@ -1,0 +1,105 @@
+doctype html
+html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controller="CharacterController")
+    head
+        title #{t('character.sheet')}
+        link(rel="stylesheet",href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css")
+        link(rel="stylesheet",href="css/rpgzone.css")
+        script(src="http://code.jquery.com/jquery-2.1.0.min.js")
+        script(type="text/javascript",src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js")
+        script(type="text/javascript",src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-resource.min.js")
+        script(type="text/javascript",src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js")
+        script(type="text/javascript",src="js/rpgzone.js")
+        meta(charset="UTF-8")
+        meta(name="viewport",content="width=device-width, initial-scale=1")
+    body.container
+        form(data-ng-submit="submit()",class="form-horizontal")
+            section
+                h1 #{t('character.id')}
+                div.form-group
+                    label.col-xs-3(for="name") #{t('character.name')}
+                    div.col-xs-9
+                        input#name.form-control(type="text",name="name",data-ng-model="character.name")
+                div.form-group
+                    label.col-xs-3(for="class") #{t('character.class')}
+                    div.col-xs-9
+                        input#class.form-control(type="text",name="class",data-ng-model="character.class")
+                div.form-group
+                    label.col-xs-3(for="race") #{t('character.race')}
+                    div.col-xs-9
+                        input#race.form-control(type="text",name="race",data-ng-model="character.race")
+                div.form-group
+                    label.col-xs-3(for="level") #{t('character.level')}
+                    div.col-xs-3
+                        input#level.form-control(type="number",name="level",data-ng-model="character.level")
+                div.form-group
+                    label.col-xs-3(for="gender") #{t('character.gender')}
+
+                    div.col-xs-9
+                        input#gender.form-control(type="text",name="gender",data-ng-model="character.gender")
+                div.form-group
+                    label.col-xs-3(for="alignment") #{t('character.alignment')}
+
+                    div.col-xs-9
+                        input#alignment.form-control(type="text",name="alignment",data-ng-model="character.alignment")
+                div.form-group
+                    label.col-xs-3(for="diety") #{t('character.diety')}
+
+                    div.col-xs-9
+                        input#diety.form-control(type="text",name="diety",data-ng-model="character.diety")
+                div.form-group
+                    label.col-xs-3(for="paragonPath") #{t('character.paragonPath')}
+
+                    div.col-xs-9
+                        input#paragonPath.form-control(type="text",name="paragonPath",data-ng-model="character.paragonPath")
+                div.form-group
+                    label.col-xs-3(for="playerName") #{t('character.playerName')}
+
+                    div.col-xs-9
+                        input#playerName.form-control(type="text",name="playerName",data-ng-model="character.playerName")
+            section
+                h1 #{t('character.ability')}
+
+                div.form-group
+                    span.col-xs-3
+                    span.col-xs-3
+                    span.col-xs-3 #{t('character.mod')}
+                    span.col-xs-3 #{t('character.modAndLevel')}
+                div.form-group
+                    label.col-xs-3(for="strength") #{t('character.strength')}
+                    div.col-xs-3
+                        input#strength.form-control(type="number",name="strength",data-ng-model="character.strength")
+                    span.col-xs-3 {{ calculateMod(character.strength) }}
+                    span.col-xs-3 {{ calculateTotalMod( character.strength, character.level) }}
+                div.form-group
+                    label.col-xs-3(for="constitution") #{t('character.constitution')}
+                    div.col-xs-3
+                        input#constitution.form-control(type="number",name="constitution",data-ng-model="character.constitution")
+                    span.col-xs-3 {{calculateMod(character.constitution)}}
+                    span.col-xs-3 {{calculateTotalMod(character.constitution, character.level)}}
+                div.form-group
+                    label.col-xs-3(for="dexterity") #{t('character.dexterity')}
+                    div.col-xs-3
+                        input#dexterity.form-control(type="number",name="dexterity",data-ng-model="character.dexterity")
+                    span.col-xs-3 {{calculateMod(character.dexterity)}}
+                    span.col-xs-3 {{calculateTotalMod(character.dexterity, character.level)}}
+                div.form-group
+                    label.col-xs-3(for="intelligence") #{t('character.intelligence')}
+                    div.col-xs-3
+                        input#intelligence.form-control(type="number",name="intelligence",data-ng-model="character.intelligence")
+                    span.col-xs-3 {{calculateMod(character.intelligence)}}
+                    span.col-xs-3 {{calculateTotalMod(character.intelligence, character.level)}}
+                div.form-group
+                    label.col-xs-3(for="wisdom") #{t('character.wisdom')}
+                    div.col-xs-3
+                        input#wisdom.form-control(type="number",name="wisdom",data-ng-model="character.wisdom")
+                    span.col-xs-3 {{calculateMod(character.wisdom)}}
+                    span.col-xs-3 {{calculateTotalMod(character.wisdom, character.level)}}
+                div.form-group
+                    label.col-xs-3(for="charisma") #{t('character.charisma')}
+                    div.col-xs-3
+                        input#charisma.form-control(type="number",name="charisma",data-ng-model="character.charisma")
+                    span.col-xs-3 {{calculateMod(character.charisma)}}
+                    span.col-xs-3 {{calculateTotalMod(character.charisma, character.level)}}
+            div
+                input.btn.btn-success(type="submit",value="#{t('character.save')}")
+                button.btn.btn-danger.pull-right(data-ng-click="suppress()",type="button") #{t('character.delete')}
