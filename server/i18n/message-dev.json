@@ -35,6 +35,7 @@
         "reflex": "Réflexe",
         "will": "Volonté",
         "skills": "Compétences",
+        "training": "Entraînement",
         "acrobatics": "Acrobaties",
         "arcana": "Arcanes",
         "athletics": "Athlétisme",
@@ -54,7 +55,8 @@
         "thievery": "Vol",
         "alchemy": "Alchimie",
 
-
+        "value": "Valeur",
+        "bonus": "Bonus",
         "save": "Sauvegarder",
         "return": "Retour à la liste des personnages"
     }

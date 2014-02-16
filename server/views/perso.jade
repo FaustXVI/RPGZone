@@ -15,7 +15,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
         form#sheet(data-ng-submit="submit()",class="form-horizontal")
             section
                 h1
-                    a(data-toggle="collapse" data-target="#character-id") #{t('character.id')}
+                    a(data-toggle="collapse",data-target="#character-id") #{t('character.id')}
                 div#character-id.collapse
                     div.form-group
                         label.col-xs-3(for="name") #{t('character.name')}
@@ -60,7 +60,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
                             input#playerName.form-control(type="text",name="playerName",data-ng-model="character.playerName")
             section
                 h1
-                    a(data-toggle="collapse" data-target="#ability") #{t('character.ability')}
+                    a(data-toggle="collapse",data-target="#ability") #{t('character.ability')}
                 div#ability.collapse
                     div.form-group
                         span.col-xs-3
@@ -105,7 +105,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
                         span.col-xs-3 {{calculateTotalMod(character.charisma, character.level)}}
             section
                 h1
-                    a(data-toggle="collapse" data-target="#hp") #{t('character.hp')}
+                    a(data-toggle="collapse",data-target="#hp") #{t('character.hp')}
                 div#hp.collapse
                     div.form-group
                         label.col-xs-3(for="currentHp") #{t('character.currentHp')}
@@ -123,8 +123,12 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
                         p {{calculateSurge(character.maxHp)}}
             section
                 h1
-                    a(data-toggle="collapse" data-target="#defenses") #{t('character.defenses')}
+                    a(data-toggle="collapse",data-target="#defenses") #{t('character.defenses')}
                 div#defenses.collapse
+                    div.form-group
+                        p.col-xs-3
+                        p.col-xs-3 #{t('character.value')}
+                        p.col-xs-3 #{t('character.bonus')}
                     div.form-group
                         label.col-xs-3(for="armor") #{t('character.armor')}
                         p.col-xs-3 {{ 10 + calculateHalfLevel(character.level) + character.armor}}
@@ -147,8 +151,13 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
                             input#will.form-control(type="number",name="will",data-ng-model="character.will")
             section
                 h1
-                    a(data-toggle="collapse" data-target="#skills") #{t('character.skills')}
+                    a(data-toggle="collapse",data-target="#skills") #{t('character.skills')}
                 div#skills.collapse
+                    div.form-group
+                        p.col-xs-3
+                        p.col-xs-3 #{t('character.value')}
+                        p.col-xs-3 #{t('character.training')}
+                        p.col-xs-3 #{t('character.bonus')}
                     div.form-group
                         label.col-xs-3 #{t('character.acrobatics')}
                         p.col-xs-3 {{ calculateTotalMod(character.dexterity,character.level) + character.trainedAcrobatics + character.bonusAcrobatics}}
