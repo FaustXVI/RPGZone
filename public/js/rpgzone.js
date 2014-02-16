@@ -18,9 +18,33 @@ rpgZone.controller('CharacterController', function ($scope, $location, $window, 
         }
     };
 
+    function calculateHalfLevel(level) {
+        if (level) {
+            return Math.floor(level / 2);
+        } else {
+            return 0;
+        }
+    }
+
     var calculateTotalMod = function (value, level) {
         if (level) {
-            return calculateMod(value) + Math.floor(level / 2);
+            return calculateMod(value) + calculateHalfLevel(level);
+        } else {
+            return 0;
+        }
+    };
+
+    var calculateBloodied = function (maxHp) {
+        if (maxHp) {
+            return Math.floor(maxHp / 2);
+        } else {
+            return 0;
+        }
+    };
+
+    var calculateSurge = function (maxHp) {
+        if (maxHp) {
+            return Math.floor(maxHp / 4);
         } else {
             return 0;
         }
@@ -28,6 +52,9 @@ rpgZone.controller('CharacterController', function ($scope, $location, $window, 
 
     $scope.calculateMod = calculateMod;
     $scope.calculateTotalMod = calculateTotalMod;
+    $scope.calculateBloodied = calculateBloodied;
+    $scope.calculateSurge = calculateSurge;
+    $scope.calculateHalfLevel = calculateHalfLevel;
 
     $scope.character = {};
 
@@ -44,17 +71,22 @@ rpgZone.controller('CharacterController', function ($scope, $location, $window, 
         }
     };
 
-    $scope.suppress = function () {
-        $scope.character.$delete(function () {
-                $window.location.href = "/";
-            }
-        );
-    };
-
 });
 
 rpgZone.controller('CharacterListController', function ($scope, $location, CharacterService) {
 
     $scope.characters = CharacterService.query();
+
+
+    $scope.suppress = function (id) {
+        console.log("Suppress " + id);
+        CharacterService.get({characterId: id}, function (result) {
+                result.$delete(function () {
+                    $scope.characters = CharacterService.query();
+                });
+            }
+        );
+
+    };
 
 });
