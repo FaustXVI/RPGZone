@@ -25,6 +25,6 @@
         "wisdom": "Sagesse",
         "charisma": "Charisme",
         "save": "Sauvegarder",
-        "delete": "Supprimer la fiche"
+        "return": "Retour à la liste des personnages"
     }
 }

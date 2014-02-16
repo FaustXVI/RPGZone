@@ -44,17 +44,22 @@ rpgZone.controller('CharacterController', function ($scope, $location, $window, 
         }
     };
 
-    $scope.suppress = function () {
-        $scope.character.$delete(function () {
-                $window.location.href = "/";
-            }
-        );
-    };
-
 });
 
 rpgZone.controller('CharacterListController', function ($scope, $location, CharacterService) {
 
     $scope.characters = CharacterService.query();
+
+
+    $scope.suppress = function (id) {
+        console.log("Suppress " + id);
+        CharacterService.get({characterId: id}, function (result) {
+                result.$delete(function () {
+                    $scope.characters = CharacterService.query();
+                });
+            }
+        );
+
+    };
 
 });

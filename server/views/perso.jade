@@ -100,6 +100,10 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
                         input#charisma.form-control(type="number",name="charisma",data-ng-model="character.charisma")
                     span.col-xs-3 {{calculateMod(character.charisma)}}
                     span.col-xs-3 {{calculateTotalMod(character.charisma, character.level)}}
-            div
-                input.btn.btn-success(type="submit",value="#{t('character.save')}")
-                button.btn.btn-danger.pull-right(data-ng-click="suppress()",type="button") #{t('character.delete')}
+            button.btn.btn-success.pull-left(type="submit")
+                span.glyphicon.glyphicon-save
+                span.hidden-xs  #{t('character.save')}
+        form(action="/",method="GET")
+            button.btn.btn-info.pull-right(type="submit")
+                span.glyphicon.glyphicon-list
+                span.hidden-xs  #{t('character.return')}

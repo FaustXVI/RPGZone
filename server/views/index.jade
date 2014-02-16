@@ -13,9 +13,12 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
         meta(name="viewport",content="width=device-width, initial-scale=1")
     body.container(data-ng-controller="CharacterListController")
         div
-            ul
+            ul.list-unstyled
                 li(data-ng-repeat="character in characters")
-                    a(data-ng-href="perso.html?id={{ character._id }}",target="_self")
+                    a.col-xs-9(data-ng-href="perso.html?id={{ character._id }}",target="_self")
                         | {{ character.playerName }} ({{ character.name }})
+                    form.col-xs-3(ng-submit="suppress( character._id )")
+                        button.btn.btn-danger.pull-right(type="submit")
+                            span.glyphicon.glyphicon-remove
         form(action="perso.html",method="get")
             input.btn.btn-primary(type="submit",value="#{t('home.button')}")
