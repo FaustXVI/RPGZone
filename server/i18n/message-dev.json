@@ -29,7 +29,7 @@
             "charisma": "Charisme"
         },
         "hp": {
-            "title": "Hit points",
+            "title": "Points de vie",
             "currentHp": "HP",
             "maxHp": "HP max",
             "bloodied": "Ensanglanté",
