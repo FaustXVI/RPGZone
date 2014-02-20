@@ -3,7 +3,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
     head
         title #{t('home.title')}
         include head
-    body.container(data-ng-controller="CharacterListController")
+    body.container(data-ng-controller="characterListController")
         div
             ul.list-unstyled
                 li(data-ng-repeat="character in characters")

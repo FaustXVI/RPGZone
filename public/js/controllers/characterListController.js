@@ -1,6 +1,6 @@
-var rpgZone = angular.module('characterListController', ['characterService']);
+var characterListController = angular.module('characterListController', ['characterService']);
 
-rpgZone.controller('CharacterListController', function ($scope, $location, characterService) {
+characterListController.controller('characterListController', function ($scope, characterService) {
 
     function loadCharacters() {
         $scope.characters = characterService.query();
