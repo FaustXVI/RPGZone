@@ -2,15 +2,7 @@ doctype html
 html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
     head
         title #{t('home.title')}
-        link(rel="stylesheet",href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css")
-        link(rel="stylesheet",href="css/rpgzone.css")
-        script(src="http://code.jquery.com/jquery-2.1.0.min.js")
-        script(type="text/javascript",src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js")
-        script(type="text/javascript",src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-resource.min.js")
-        script(type="text/javascript",src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js")
-        script(type="text/javascript",src="js/rpgzone.js")
-        meta(charset="UTF-8")
-        meta(name="viewport",content="width=device-width, initial-scale=1")
+        include head
     body.container(data-ng-controller="CharacterListController")
         div
             ul.list-unstyled
