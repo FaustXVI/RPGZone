@@ -17,6 +17,13 @@
             "paragonPath": "Voie parangonique",
             "playerName": "Nom du joueur"
         },
+        "initiative": {
+            "title": "Initiative"
+        },
+        "movement": {
+            "title": "Mouvement",
+            "speed": "Vitesse"
+        },
         "ability": {
             "title": "Aptitudes",
             "mod": "Mod.",

@@ -1,0 +1,8 @@
+section
+    h1
+        a(data-toggle="collapse",data-target="#movement") #{t('character.movement.title')}
+    div#movement.collapse
+        div.form-group
+            label.col-xs-3(for="speed") #{t('character.movement.speed')}
+            div.col-xs-3
+                input#strength.form-control(type="number",name="speed",data-ng-model="character.speed")
