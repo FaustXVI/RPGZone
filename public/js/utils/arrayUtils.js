@@ -11,11 +11,11 @@ arrayUtils.factory('arrayUtils', function () {
                 list.splice(index, 1);
             }
         },
-        initArrays: function (character, arrayNames) {
+        initArrays: function (object, arrayNames) {
             for (var i = 0; i < arrayNames.length; i++) {
                 var arrayName = arrayNames[i];
-                if (!character[arrayName]) {
-                    character[arrayName] = [];
+                if (!object[arrayName]) {
+                    object[arrayName] = [];
                 }
             }
         }
