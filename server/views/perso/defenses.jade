@@ -1,0 +1,28 @@
+section
+    h1
+        a(data-toggle="collapse",data-target="#defenses") #{t('character.defenses.title')}
+    div#defenses.collapse
+        div.form-group
+            p.col-xs-3
+            p.col-xs-3 #{t('character.value')}
+            p.col-xs-3 #{t('character.bonus')}
+        div.form-group
+            label.col-xs-3(for="armor") #{t('character.defenses.armor')}
+            p.col-xs-3 {{ 10 + calculateHalfLevel(character.level) + character.armor}}
+            div.col-xs-3
+                input#armor.form-control(type="number",name="armor",data-ng-model="character.armor")
+        div.form-group
+            label.col-xs-3(for="fortitude") #{t('character.defenses.fortitude')}
+            p.col-xs-3 {{ 10 + calculateHalfLevel(character.level) + character.fortitude}}
+            div.col-xs-3
+                input#fortitude.form-control(type="number",name="fortitude",data-ng-model="character.fortitude")
+        div.form-group
+            label.col-xs-3(for="reflex") #{t('character.defenses.reflex')}
+            p.col-xs-3 {{ 10 + calculateHalfLevel(character.level) + character.reflex}}
+            div.col-xs-3
+                input#reflex.form-control(type="number",name="reflex",data-ng-model="character.reflex")
+        div.form-group
+            label.col-xs-3(for="will") #{t('character.defenses.will')}
+            p.col-xs-3 {{ 10 + calculateHalfLevel(character.level) + character.will}}
+            div.col-xs-3
+                input#will.form-control(type="number",name="will",data-ng-model="character.will")

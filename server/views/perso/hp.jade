@@ -1,0 +1,18 @@
+section
+    h1
+        a(data-toggle="collapse",data-target="#hp") #{t('character.hp.title')}
+    div#hp.collapse
+        div.form-group
+            label.col-xs-3(for="currentHp") #{t('character.hp.currentHp')}
+            div.col-xs-3
+                input#currentHp.form-control(type="number",name="currentHp",data-ng-model="character.currentHp")
+        div.form-group
+            label.col-xs-3(for="maxHp") #{t('character.hp.maxHp')}
+            div.col-xs-3
+                input#maxHp.form-control(type="number",name="maxHp",data-ng-model="character.maxHp")
+        div.form-group.bg-danger
+            p.hidden-xs.col-xs-3 #{t('character.hp.bloodied')}
+            p {{calculateBloodied(character.maxHp)}}
+        div.form-group.bg-info
+            p.hidden-xs.col-xs-3 #{t('character.hp.surge')}
+            p {{calculateSurge(character.maxHp)}}

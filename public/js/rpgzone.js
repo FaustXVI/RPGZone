@@ -50,13 +50,26 @@ rpgZone.controller('CharacterController', function ($scope, $location, $window, 
         }
     };
 
+    var addElementToList = function (list) {
+        list.push({});
+    };
+
+    var removeElementToList = function (list, element) {
+        var index = list.indexOf(element);
+        if (index > -1) {
+            list.splice(index, 1);
+        }
+    };
+
     $scope.calculateMod = calculateMod;
     $scope.calculateTotalMod = calculateTotalMod;
     $scope.calculateBloodied = calculateBloodied;
     $scope.calculateSurge = calculateSurge;
     $scope.calculateHalfLevel = calculateHalfLevel;
+    $scope.addElementToList = addElementToList;
+    $scope.removeElementToList = removeElementToList;
 
-    $scope.character = {};
+    $scope.character = {notes: []};
 
     if ($location.search() && $location.search().id) {
         $scope.character = CharacterService.get({characterId: $location.search().id});
@@ -75,18 +88,21 @@ rpgZone.controller('CharacterController', function ($scope, $location, $window, 
 
 rpgZone.controller('CharacterListController', function ($scope, $location, CharacterService) {
 
-    $scope.characters = CharacterService.query();
-
+    function loadCharacters() {
+        $scope.characters = CharacterService.query();
+    }
 
     $scope.suppress = function (id) {
         console.log("Suppress " + id);
         CharacterService.get({characterId: id}, function (result) {
                 result.$delete(function () {
-                    $scope.characters = CharacterService.query();
+                    loadCharacters();
                 });
             }
         );
 
     };
+
+    loadCharacters();
 
 });

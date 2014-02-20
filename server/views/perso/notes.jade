@@ -1,0 +1,12 @@
+section
+    h1
+        a(data-toggle="collapse",data-target="#notes") #{t('character.notes.title')}
+    div#notes.collapse.in
+        ul.list-unstyled
+            li.col-xs-12(ng-repeat="note in character.notes")
+                button.btn.btn-danger.pull-right(type="button",ng-click="removeElementToList(character.notes,note)")
+                    span.glyphicon.glyphicon-minus
+                div.col-xs-10
+                    textarea.form-control(ng-model="note.text")
+        button.btn.btn-success(type="button",ng-click="addElementToList(character.notes)")
+            span.glyphicon.glyphicon-plus

@@ -64,7 +64,9 @@
             "thievery": "Vol",
             "alchemy": "Alchimie"
         },
-
+        "notes": {
+            "title": "Notes"
+        },
         "value": "Valeur",
         "bonus": "Bonus",
         "save": "Sauvegarder",
