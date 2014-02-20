@@ -1,0 +1,12 @@
+section
+    h1
+        a(data-toggle="collapse",data-target="#equipments") #{t('character.equipments.title')}
+    div#equipments.collapse
+        ul.list-unstyled
+            li.col-xs-12(ng-repeat="equipment in character.equipments")
+                button.btn.btn-danger.pull-right(type="button",ng-click="removeElementToList(character.equipments,equipment)")
+                    span.glyphicon.glyphicon-minus
+                div.col-xs-10
+                    textarea.form-control(ng-model="equipment.text")
+        button.btn.btn-success(type="button",ng-click="addElementToList(character.equipments)")
+            span.glyphicon.glyphicon-plus

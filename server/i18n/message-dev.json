@@ -67,6 +67,21 @@
         "notes": {
             "title": "Notes"
         },
+        "powers": {
+            "title": "Pouvoirs"
+        },
+        "wealth": {
+            "title": "Richesses",
+            "gold": "Or",
+            "silver": "Argent",
+            "bronze": "Bronze"
+        },
+        "equipments": {
+            "title": "Equipement"
+        },
+        "feats": {
+            "title": "Exploit"
+        },
         "value": "Valeur",
         "bonus": "Bonus",
         "save": "Sauvegarder",

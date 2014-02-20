@@ -1,0 +1,16 @@
+section
+    h1
+        a(data-toggle="collapse",data-target="#wealth") #{t('character.wealth.title')}
+    div#wealth.collapse
+        div.form-group
+            label.col-xs-3(for="gold") #{t('character.wealth.gold')}
+            div.col-xs-3
+                input#strength.form-control(type="number",name="gold",data-ng-model="character.gold")
+        div.form-group
+            label.col-xs-3(for="silver") #{t('character.wealth.silver')}
+            div.col-xs-3
+                input#strength.form-control(type="number",name="silver",data-ng-model="character.silver")
+        div.form-group
+            label.col-xs-3(for="bronze") #{t('character.wealth.bronze')}
+            div.col-xs-3
+                input#strength.form-control(type="number",name="bronze",data-ng-model="character.bronze")

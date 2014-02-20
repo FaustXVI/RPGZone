@@ -69,7 +69,12 @@ rpgZone.controller('CharacterController', function ($scope, $location, $window, 
     $scope.addElementToList = addElementToList;
     $scope.removeElementToList = removeElementToList;
 
-    $scope.character = {notes: []};
+    $scope.character = {
+        notes: [],
+        powers: [],
+        feats: [],
+        equipments: []
+    };
 
     if ($location.search() && $location.search().id) {
         $scope.character = CharacterService.get({characterId: $location.search().id});

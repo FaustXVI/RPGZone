@@ -1,0 +1,12 @@
+section
+    h1
+        a(data-toggle="collapse",data-target="#powers") #{t('character.powers.title')}
+    div#powers.collapse
+        ul.list-unstyled
+            li.col-xs-12(ng-repeat="power in character.powers")
+                button.btn.btn-danger.pull-right(type="button",ng-click="removeElementToList(character.powers,power)")
+                    span.glyphicon.glyphicon-minus
+                div.col-xs-10
+                    textarea.form-control(ng-model="power.text")
+        button.btn.btn-success(type="button",ng-click="addElementToList(character.powers)")
+            span.glyphicon.glyphicon-plus

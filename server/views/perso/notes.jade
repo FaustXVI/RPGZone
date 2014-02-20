@@ -1,7 +1,7 @@
 section
     h1
         a(data-toggle="collapse",data-target="#notes") #{t('character.notes.title')}
-    div#notes.collapse.in
+    div#notes.collapse
         ul.list-unstyled
             li.col-xs-12(ng-repeat="note in character.notes")
                 button.btn.btn-danger.pull-right(type="button",ng-click="removeElementToList(character.notes,note)")
