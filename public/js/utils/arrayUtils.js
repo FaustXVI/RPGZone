@@ -6,8 +6,14 @@ arrayUtils.factory('arrayUtils', function () {
             scope.addElementToList = this.addElementToList;
             scope.removeElementToList = this.removeElementToList;
         },
-        addElementToList: function (list) {
-            list.push({});
+        addElementToList: function (list, factoryMethod) {
+            var element;
+            if (factoryMethod) {
+                element = factoryMethod();
+            } else {
+                element = {};
+            }
+            list.push(element);
         },
         removeElementToList: function (list, element) {
             var index = list.indexOf(element);

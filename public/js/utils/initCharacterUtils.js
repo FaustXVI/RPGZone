@@ -27,6 +27,9 @@ initCharacterUtils.factory('initCharacterUtils', ['arrayUtils', 'objectUtils', f
                 "alchemy"
             ]);
             arrayUtils.initArrays(character.powers, ["atWill", "encounter", "daily", "utility"]);
+        },
+        createEquipment: function () {
+            return {"powers": []};
         }
     };
 }

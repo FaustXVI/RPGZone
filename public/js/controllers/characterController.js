@@ -22,6 +22,7 @@ rpgZone.controller('characterController', function ($scope, $location, character
 
     calculator.addToScope($scope);
     arrayUtils.addToScope($scope);
+    $scope.createEquipment = initCharacterUtils.createEquipment;
     $scope.submit = saveCharacter;
 
     loadCurrentCharacter();

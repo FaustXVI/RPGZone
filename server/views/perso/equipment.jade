@@ -1,12 +1,48 @@
+mixin equipmentSimple(equipmentList)
+    ul.list-unstyled
+        li.col-xs-12(data-ng-repeat="equipment in "+equipmentList)
+            div.form-group
+                label.col-xs-3(for="equipmentName") #{t('character.equipments.name')}
+                div.col-xs-7
+                    input#equipmentName.form-control(type="text",name="equipmentName",data-ng-model="equipment.name")
+                button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+equipmentList+",equipment)")
+                    span.glyphicon.glyphicon-minus
+            div.form-group
+                label.col-xs-3(for="equipmentPosition") #{t('character.equipments.position')}
+                div.col-xs-9
+                    +position("equipment.position")
+            section
+                h3 #{t('character.powers.title')}
+                +equipmentPowerSimple("equipment.powers")
+            if block
+                block
+            div.form-group
+                textarea.form-control(data-ng-model="equipment.text")
+        button.btn.btn-success(type="button",data-ng-click="addElementToList("+equipmentList+",createEquipment)")
+            span.glyphicon.glyphicon-plus
+
+mixin equipmentPowerSimple(powerList)
+    ul.list-unstyled
+        li.col-xs-12(data-ng-repeat="power in "+powerList)
+            div.form-group
+                label.col-xs-3(for="powerName") #{t('character.powers.name')}
+                div.col-xs-7
+                    input#powerName.form-control(type="text",name="powerName",data-ng-model="power.name")
+                button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+powerList+",power)")
+                    span.glyphicon.glyphicon-minus
+            div.form-group
+                label.col-xs-3(for="equipmentPowerType") #{t('character.powers.type')}
+                div.col-xs-9
+                    +powerType(model)
+            if block
+                block
+            div.form-group
+                textarea.form-control(data-ng-model="power.text")
+        button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")")
+            span.glyphicon.glyphicon-plus
+
 section
     h1
         a(data-toggle="collapse",data-target="#equipments") #{t('character.equipments.title')}
     div#equipments.collapse
-        ul.list-unstyled
-            li.col-xs-12(data-ng-repeat="equipment in character.equipments")
-                button.btn.btn-danger.pull-right(type="button",data-ng-click="removeElementToList(character.equipments,equipment)")
-                    span.glyphicon.glyphicon-minus
-                div.col-xs-10
-                    textarea.form-control(data-ng-model="equipment.text")
-        button.btn.btn-success(type="button",data-ng-click="addElementToList(character.equipments)")
-            span.glyphicon.glyphicon-plus
+        +equipmentSimple("character.equipments")

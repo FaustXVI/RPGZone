@@ -80,6 +80,7 @@
             "encounter": "Rencontre",
             "daily": "Journalier",
             "utility": "Utilitaire",
+            "type": "Type",
             "name": "Nom",
             "used": "Utilisé",
             "damages": "Dégats",
@@ -93,7 +94,18 @@
             "bronze": "Bronze"
         },
         "equipments": {
-            "title": "Equipement"
+            "title": "Equipement",
+            "name": "Nom",
+            "position": "Position",
+            "weapon": "Arme",
+            "armor": "Armure",
+            "arms": "Bras",
+            "feet": "Pied",
+            "hands": "Mains",
+            "head": "Tête",
+            "neck": "Cou",
+            "ring": "Anneau",
+            "waist": "Taille"
         },
         "feats": {
             "title": "Talents",

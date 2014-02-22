@@ -5,7 +5,7 @@ mixin featSimple(featList)
                 label.col-xs-3(for="featName") #{t('character.feats.name')}
                 div.col-xs-7
                     input#powerName.form-control(type="text",name="featName",data-ng-model="feat.name")
-                button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+featList+",power)")
+                button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+featList+",feat)")
                     span.glyphicon.glyphicon-minus
             div.form-group
                 textarea.form-control(data-ng-model="feat.text")
