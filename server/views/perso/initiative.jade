@@ -2,4 +2,4 @@ section
     h1
         a(data-toggle="collapse",data-target="#initiative") #{t('character.initiative.title')}
     div#initiative.collapse
-        p {{calculateHalfLevel(character.level) + calculateMod(character.dexterity)}}
+        p(data-ng-bind="calculateHalfLevel(character.id.level) + calculateMod(character.ability.dexterity)")

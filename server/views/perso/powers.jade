@@ -1,7 +1,7 @@
 section
     h1
         a(data-toggle="collapse",data-target="#powers") #{t('character.powers.title')}
-    div#powers.collapse.in
+    div#powers.collapse
         section
             h2
                 a(data-toggle="collapse",data-target="#atWill") #{t('character.powers.atWill')}
@@ -19,7 +19,7 @@ section
         section
             h2
                 a(data-toggle="collapse",data-target="#daily") #{t('character.powers.daily')}
-            div#daily.collapse.in
+            div#daily.collapse
                 +power("character.powers.daily")
                     div.form-group.checkbox
                         label

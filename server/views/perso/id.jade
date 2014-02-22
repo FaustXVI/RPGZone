@@ -1,40 +1,16 @@
+mixin id(label)
+    +entry("id."+label)(type!=attributes.type)
+
 section
     h1
         a(data-toggle="collapse",data-target="#character-id") #{t('character.id.title')}
     div#character-id.collapse
-        div.form-group
-            label.col-xs-3(for="name") #{t('character.id.name')}
-            div.col-xs-9
-                input#name.form-control(type="text",name="name",data-ng-model="character.name")
-        div.form-group
-            label.col-xs-3(for="class") #{t('character.id.class')}
-            div.col-xs-9
-                input#class.form-control(type="text",name="class",data-ng-model="character.class")
-        div.form-group
-            label.col-xs-3(for="race") #{t('character.id.race')}
-            div.col-xs-9
-                input#race.form-control(type="text",name="race",data-ng-model="character.race")
-        div.form-group
-            label.col-xs-3(for="level") #{t('character.id.level')}
-            div.col-xs-3
-                input#level.form-control(type="number",name="level",data-ng-model="character.level")
-        div.form-group
-            label.col-xs-3(for="gender") #{t('character.id.gender')}
-            div.col-xs-9
-                input#gender.form-control(type="text",name="gender",data-ng-model="character.gender")
-        div.form-group
-            label.col-xs-3(for="alignment") #{t('character.id.alignment')}
-            div.col-xs-9
-                input#alignment.form-control(type="text",name="alignment",data-ng-model="character.alignment")
-        div.form-group
-            label.col-xs-3(for="diety") #{t('character.id.diety')}
-            div.col-xs-9
-                input#diety.form-control(type="text",name="diety",data-ng-model="character.diety")
-        div.form-group
-            label.col-xs-3(for="paragonPath") #{t('character.id.paragonPath')}
-            div.col-xs-9
-                input#paragonPath.form-control(type="text",name="paragonPath",data-ng-model="character.paragonPath")
-        div.form-group
-            label.col-xs-3(for="playerName") #{t('character.id.playerName')}
-            div.col-xs-9
-                input#playerName.form-control(type="text",name="playerName",data-ng-model="character.playerName")
+        +id("name")
+        +id("class")
+        +id("race")
+        +id("level")(type="number")
+        +id("gender")
+        +id("alignment")
+        +id("diety")
+        +id("paragonPath")
+        +id("playerName")

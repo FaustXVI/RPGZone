@@ -1,4 +1,11 @@
 include selects
+
+mixin entry(name)
+    div.form-group
+        label.col-xs-3(for=name) #{t('character.'+name)}
+        div.col-xs-9
+            input.form-control(type!=attributes.type?attributes.type:"text",name=name,data-ng-model="character."+name,id=name)
+
 mixin dices(numberModel,valueModel)
     div.col-xs-3
         input.form-control(type="number",data-ng-model=numberModel)

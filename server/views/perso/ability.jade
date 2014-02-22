@@ -2,9 +2,9 @@ mixin carac(carac)
     div.form-group
         label.col-xs-3(for=carac) #{t('character.ability.'+carac)}
         div.col-xs-3
-            input.form-control(type="number",name=carac,data-ng-model="character."+carac,id=carac)
-        span.col-xs-3(data-ng-bind="calculateMod(character."+carac+")")
-        span.col-xs-3(data-ng-bind="calculateTotalMod(character."+carac+", character.level)")
+            input.form-control(type="number",data-ng-model="character.ability."+carac,id=carac)
+        span.col-xs-3(data-ng-bind="calculateMod(character.ability."+carac+")")
+        span.col-xs-3(data-ng-bind="calculateTotalMod(character.ability."+carac+", character.id.level)")
 
 section
     h1

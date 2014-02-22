@@ -1,3 +1,12 @@
+mixin skill(skill)
+    div.form-group
+        label.col-xs-3 #{t('character.skills.'+skill)}
+        p.col-xs-3(data-ng-bind="calculateTotalMod(character.skills."+skill+",character.level) + character.skills."+skill+".trained + character.skills."+skill+".bonus")
+        div.col-xs-3
+            input.form-control(type="number",data-ng-model="character.skills."+skill+".trained")
+        div.col-xs-3
+            input.form-control(type="number",data-ng-model="character.skills."+skill+".bonus")
+
 section
     h1
         a(data-toggle="collapse",data-target="#skills") #{t('character.skills.title')}
@@ -7,129 +16,22 @@ section
             p.col-xs-3 #{t('character.value')}
             p.col-xs-3 #{t('character.skills.training')}
             p.col-xs-3 #{t('character.bonus')}
-        div.form-group
-            label.col-xs-3 #{t('character.skills.acrobatics')}
-            p.col-xs-3 {{ calculateTotalMod(character.dexterity,character.level) + character.trainedAcrobatics + character.bonusAcrobatics}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedAcrobatics",data-ng-model="character.trainedAcrobatics")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusAcrobatics",data-ng-model="character.bonusAcrobatics")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.arcana')}
-            p.col-xs-3 {{ calculateTotalMod(character.intelligence,character.level) + character.trainedArcana + character.bonusArcana}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedArcana",data-ng-model="character.trainedArcana")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusArcana",data-ng-model="character.bonusArcana")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.athletics')}
-            p.col-xs-3 {{ calculateTotalMod(character.strength,character.level) + character.trainedAthletics + character.bonusAthletics}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedAthletics",data-ng-model="character.trainedAthletics")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusAthletics",data-ng-model="character.bonusAthletics")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.bluff')}
-            p.col-xs-3 {{ calculateTotalMod(character.charisma,character.level) + character.trainedBluff + character.bonusBluff}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedBluff",data-ng-model="character.trainedBluff")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusBluff",data-ng-model="character.bonusBluff")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.diplomacy')}
-            p.col-xs-3 {{ calculateTotalMod(character.charisma,character.level) + character.trainedDiplomacy + character.bonusDiplomacy}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedDiplomacy",data-ng-model="character.trainedDiplomacy")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusDiplomacy",data-ng-model="character.bonusDiplomacy")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.dungeoneering')}
-            p.col-xs-3 {{ calculateTotalMod(character.wisdom,character.level) + character.trainedDungeoneering + character.bonusDungeoneering}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedDungeoneering",data-ng-model="character.trainedDungeoneering")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusDungeoneering",data-ng-model="character.bonusDungeoneering")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.endurance')}
-            p.col-xs-3 {{ calculateTotalMod(character.constitution,character.level) + character.trainedEndurance + character.bonusEndurance}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedEndurance",data-ng-model="character.trainedEndurance")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusEndurance",data-ng-model="character.bonusEndurance")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.heal')}
-            p.col-xs-3 {{ calculateTotalMod(character.wisdom,character.level) + character.trainedHeal + character.bonusHeal}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedHeal",data-ng-model="character.trainedHeal")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusHeal",data-ng-model="character.bonusHeal")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.history')}
-            p.col-xs-3 {{ calculateTotalMod(character.intelligence,character.level) + character.trainedHistory + character.bonusHistory}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedHistory",data-ng-model="character.trainedHistory")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusHistory",data-ng-model="character.bonusHistory")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.insight')}
-            p.col-xs-3 {{ calculateTotalMod(character.wisdom,character.level) + character.trainedInsight + character.bonusInsight}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedInsight",data-ng-model="character.trainedInsight")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusInsight",data-ng-model="character.bonusInsight")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.intimidate')}
-            p.col-xs-3 {{ calculateTotalMod(character.charisma,character.level) + character.trainedIntimidate + character.bonusIntimidate}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedIntimidate",data-ng-model="character.trainedIntimidate")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusIntimidate",data-ng-model="character.bonusIntimidate")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.nature')}
-            p.col-xs-3 {{ calculateTotalMod(character.wisdom,character.level) + character.trainedNature + character.bonusNature}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedNature",data-ng-model="character.trainedNature")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusNature",data-ng-model="character.bonusNature")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.perception')}
-            p.col-xs-3 {{ calculateTotalMod(character.wisdom,character.level) + character.trainedPerception + character.bonusPerception}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedPerception",data-ng-model="character.trainedPerception")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusPerception",data-ng-model="character.bonusPerception")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.religion')}
-            p.col-xs-3 {{ calculateTotalMod(character.intelligence,character.level) + character.trainedReligion + character.bonusReligion}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedReligion",data-ng-model="character.trainedReligion")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusReligion",data-ng-model="character.bonusReligion")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.stealth')}
-            p.col-xs-3 {{ calculateTotalMod(character.dexterity,character.level) + character.trainedStealth + character.bonusStealth}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedStealth",data-ng-model="character.trainedStealth")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusStealth",data-ng-model="character.bonusStealth")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.streetwise')}
-            p.col-xs-3 {{ calculateTotalMod(character.charisma,character.level) + character.trainedStreetwise + character.bonusStreetwise}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedStreetwise",data-ng-model="character.trainedStreetwise")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusStreetwise",data-ng-model="character.bonusStreetwise")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.thievery')}
-            p.col-xs-3 {{ calculateTotalMod(character.dexterity,character.level) + character.trainedThievery + character.bonusThievery}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedThievery",data-ng-model="character.trainedThievery")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusThievery",data-ng-model="character.bonusThievery")
-        div.form-group
-            label.col-xs-3 #{t('character.skills.alchemy')}
-            p.col-xs-3 {{ calculateTotalMod(character.dexterity,character.level) + character.trainedAlchemy + character.bonusAlchemy}}
-            div.col-xs-3
-                input.form-control(type="number",name="trainedAlchemy",data-ng-model="character.trainedAlchemy")
-            div.col-xs-3
-                input.form-control(type="number",name="bonusAlchemy",data-ng-model="character.bonusAlchemy")
+        +skill("acrobatics")
+        +skill("arcana")
+        +skill("athletics")
+        +skill("bluff")
+        +skill("diplomacy")
+        +skill("dungeoneering")
+        +skill("endurance")
+        +skill("heal")
+        +skill("history")
+        +skill("insight")
+        +skill("intimidate")
+        +skill("nature")
+        +skill("perception")
+        +skill("religion")
+        +skill("stealth")
+        +skill("streetwise")
+        +skill("streetwise")
+        +skill("thievery")
+        +skill("alchemy")
