@@ -96,7 +96,8 @@
             "title": "Equipement"
         },
         "feats": {
-            "title": "Talents"
+            "title": "Talents",
+            "name": "Nom"
         },
         "value": "Valeur",
         "bonus": "Bonus",
