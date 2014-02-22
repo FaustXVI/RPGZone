@@ -1,4 +1,4 @@
-mixin power(powerList)
+mixin powerSimple(powerList)
     ul.list-unstyled
         li.col-xs-12(data-ng-repeat="power in "+powerList)
             div.form-group
@@ -7,25 +7,37 @@ mixin power(powerList)
                     input#powerName.form-control(type="text",name="powerName",data-ng-model="power.name")
                 button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+powerList+",power)")
                     span.glyphicon.glyphicon-minus
-            div.form-group
-                label.col-xs-3(for="powerType") #{t('character.powers.attack')}
-                +vs("power.attack","power.defense")
-            div.form-group
-                label.col-xs-3 #{t('character.powers.damages')}
-                div.col-xs-3
-                    input.form-control(type="number",data-ng-model=numberModel)
-                span.col-xs-3
-                    p [A] + {{calculateSumMod(character,power.damagesModifiers)}}
-            div.form-group
-                label.col-xs-3 #{t('character.powers.damagesModifiers')}
-                div.col-xs-9
-                    +abilityType("power.damagesModifiers")(multiple="multiple")
-            div.form-group
-                textarea.form-control(data-ng-model="power.text")
             if block
                 block
+            div.form-group
+                textarea.form-control(data-ng-model="power.text")
         button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")")
             span.glyphicon.glyphicon-plus
+
+mixin power(powerList)
+    +powerSimple(powerList)
+        div.form-group
+            label.col-xs-3(for="powerType") #{t('character.powers.attack')}
+            +vs("power.attack","power.defense")
+        div.form-group
+            label.col-xs-3 #{t('character.powers.damages')}
+            div.col-xs-3
+                input.form-control(type="number",data-ng-model=numberModel)
+            span.col-xs-3
+                p [A] + {{calculateSumMod(character,power.damagesModifiers)}}
+        div.form-group
+            label.col-xs-3 #{t('character.powers.damagesModifiers')}
+            div.col-xs-9
+                +abilityType("power.damagesModifiers")(multiple="multiple")
+        if block
+            block
+
+mixin powerUseable(powerList)
+    +power(powerList)
+        div.form-group.checkbox
+            label
+                input.form-control(type="checkbox",data-ng-model="power.used")
+                | #{t('character.powers.used')}
 
 section
     h1
@@ -40,17 +52,14 @@ section
             h2
                 a(data-toggle="collapse",data-target="#encounter") #{t('character.powers.encounter')}
             div#encounter.collapse
-                +power("character.powers.encounter")
-                    div.form-group.checkbox
-                        label
-                            input.form-control(type="checkbox",data-ng-model="power.used")
-                            | #{t('character.powers.used')}
+                +powerUseable("character.powers.encounter")
         section
             h2
                 a(data-toggle="collapse",data-target="#daily") #{t('character.powers.daily')}
             div#daily.collapse
-                +power("character.powers.daily")
-                    div.form-group.checkbox
-                        label
-                            input.form-control(type="checkbox",data-ng-model="power.used")
-                            | #{t('character.powers.used')}
+                +powerUseable("character.powers.daily")
+        section
+            h2
+                a(data-toggle="collapse",data-target="#utility") #{t('character.powers.utility')}
+            div#utility.collapse
+                +powerSimple("character.powers.utility")

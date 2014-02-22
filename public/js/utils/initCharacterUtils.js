@@ -26,7 +26,7 @@ initCharacterUtils.factory('initCharacterUtils', ['arrayUtils', 'objectUtils', f
                 "thievery",
                 "alchemy"
             ]);
-            arrayUtils.initArrays(character.powers, ["atWill", "encounter", "daily"]);
+            arrayUtils.initArrays(character.powers, ["atWill", "encounter", "daily", "utility"]);
         }
     };
 }
