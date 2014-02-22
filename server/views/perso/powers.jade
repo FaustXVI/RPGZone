@@ -3,19 +3,25 @@ section
         a(data-toggle="collapse",data-target="#powers") #{t('character.powers.title')}
     div#powers.collapse.in
         section
-            h1 #{t('character.powers.atWill')}
-            +power("character.powers.atWill")
+            h2
+                a(data-toggle="collapse",data-target="#atWill") #{t('character.powers.atWill')}
+            div#atWill.collapse
+                +power("character.powers.atWill")
         section
-            h1 #{t('character.powers.encounter')}
-            +power("character.powers.encounter")
-                div.form-group
-                    label.col-xs-3 #{t('character.powers.used')}
-                    div.col-xs-3
-                        input.form-control(type="checkbox",data-ng-model="power.used")
+            h2
+                a(data-toggle="collapse",data-target="#encounter") #{t('character.powers.encounter')}
+            div#encounter.collapse
+                +power("character.powers.encounter")
+                    div.form-group.checkbox
+                        label
+                            input.form-control(type="checkbox",data-ng-model="power.used")
+                            | #{t('character.powers.used')}
         section
-            h1 #{t('character.powers.daily')}
-            +power("character.powers.daily")
-                div.form-group
-                    label.col-xs-3 #{t('character.powers.used')}
-                    div.col-xs-3
-                        input.form-control(type="checkbox",data-ng-model="power.used")
+            h2
+                a(data-toggle="collapse",data-target="#daily") #{t('character.powers.daily')}
+            div#daily.collapse.in
+                +power("character.powers.daily")
+                    div.form-group.checkbox
+                        label
+                            input.form-control(type="checkbox",data-ng-model="power.used")
+                            | #{t('character.powers.used')}

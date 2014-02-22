@@ -22,14 +22,21 @@ mixin power(powerList)
                 label.col-xs-3(for="powerName") #{t('character.powers.name')}
                 div.col-xs-7
                     input#powerName.form-control(type="text",name="powerName",data-ng-model="power.name")
-                button.btn.btn-danger(type="button",data-ng-click="removeElementToList(character.powers,power)")
+                button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+powerList+",power)")
                     span.glyphicon.glyphicon-minus
             div.form-group
                 label.col-xs-3(for="powerType") #{t('character.powers.attack')}
                 +vs("power.attack","power.defense")
             div.form-group
-                label.col-xs-3 #{t('character.powers.damagesBase')}
-                +dices("power.diceNumber","power.diceValue")
+                label.col-xs-3 #{t('character.powers.damages')}
+                div.col-xs-3
+                    input.form-control(type="number",data-ng-model=numberModel)
+                span.col-xs-3
+                    p [A] + {{calculateSumMod(character,power.damagesModifiers)}}
+            div.form-group
+                label.col-xs-3 #{t('character.powers.damagesModifiers')}
+                div.col-xs-9
+                    +abilityType("power.damagesModifiers")(multiple="multiple")
             div.form-group
                 textarea.form-control(data-ng-model="power.text")
             if block

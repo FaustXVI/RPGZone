@@ -8,6 +8,7 @@ calculator.factory('calculator', function () {
             scope.calculateBloodied = this.calculateBloodied;
             scope.calculateSurge = this.calculateSurge;
             scope.calculateHalfLevel = this.calculateHalfLevel;
+            scope.calculateSumMod = this.calculateSumMod;
         },
         calculateMod: function (value) {
             if (value) {
@@ -40,6 +41,18 @@ calculator.factory('calculator', function () {
         calculateSurge: function (maxHp) {
             if (maxHp) {
                 return Math.floor(maxHp / 4);
+            } else {
+                return 0;
+            }
+        },
+        calculateSumMod: function (character, abilities) {
+            if (abilities) {
+                var sum = 0;
+                for (var i = 0; i < abilities.length; i++) {
+                    var ability = abilities[i];
+                    sum += this.calculateMod(character[ability]);
+                }
+                return sum;
             } else {
                 return 0;
             }

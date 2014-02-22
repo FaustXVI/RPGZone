@@ -15,8 +15,7 @@ mixin powerType(model)
         option(value="daily") #{t('character.powers.types.daily')}
 
 mixin abilityType(model)
-    select#powerType.form-control(data-ng-model=model)
-        option(value="")
+    select#powerType.form-control(data-ng-model=model,multiple!=attributes.multiple)
         option(value="strength") #{t('character.ability.strength')}
         option(value="constitution") #{t('character.ability.constitution')}
         option(value="dexterity") #{t('character.ability.dexterity')}

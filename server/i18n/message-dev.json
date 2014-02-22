@@ -78,11 +78,12 @@
             "title": "Pouvoirs",
             "atWill": "À volonté",
             "encounter": "Rencontre",
-            "daily": "Journalié",
+            "daily": "Journalier",
             "name": "Nom",
             "used": "Utilisé",
-            "damagesBase": "Dégats de base",
-            "attack": "Attaque"
+            "damages": "Dégats",
+            "attack": "Attaque",
+            "damagesModifiers": "Modifier de dégats"
         },
         "wealth": {
             "title": "Richesses",
