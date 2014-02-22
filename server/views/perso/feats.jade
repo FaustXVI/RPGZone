@@ -1,12 +1,19 @@
+mixin featSimple(featList)
+    ul.list-unstyled
+        li.col-xs-12(data-ng-repeat="feat in "+featList)
+            div.form-group
+                label.col-xs-3(for="featName") #{t('character.feats.name')}
+                div.col-xs-7
+                    input#powerName.form-control(type="text",name="featName",data-ng-model="feat.name")
+                button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+featList+",power)")
+                    span.glyphicon.glyphicon-minus
+            div.form-group
+                textarea.form-control(data-ng-model="feat.text")
+        button.btn.btn-success(type="button",data-ng-click="addElementToList("+featList+")")
+            span.glyphicon.glyphicon-plus
+
 section
     h1
         a(data-toggle="collapse",data-target="#feats") #{t('character.feats.title')}
     div#feats.collapse
-        ul.list-unstyled
-            li.col-xs-12(data-ng-repeat="feat in character.feats")
-                button.btn.btn-danger.pull-right(type="button",data-ng-click="removeElementToList(character.feats,feat)")
-                    span.glyphicon.glyphicon-minus
-                div.col-xs-10
-                    textarea.form-control(data-ng-model="feat.text")
-        button.btn.btn-success(type="button",data-ng-click="addElementToList(character.feats)")
-            span.glyphicon.glyphicon-plus
+        +featSimple("character.feats")
