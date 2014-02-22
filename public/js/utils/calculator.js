@@ -9,6 +9,15 @@ calculator.factory('calculator', function () {
             scope.calculateSurge = this.calculateSurge;
             scope.calculateHalfLevel = this.calculateHalfLevel;
             scope.calculateSumMod = this.calculateSumMod;
+            scope.calculateSkill = this.calculateSkill;
+            scope.valueOrZero = this.valueOrZero;
+        },
+        valueOrZero: function (value) {
+            if (value) {
+                return value;
+            } else {
+                return 0;
+            }
         },
         calculateMod: function (value) {
             if (value) {
@@ -49,10 +58,19 @@ calculator.factory('calculator', function () {
             if (abilities) {
                 var sum = 0;
                 for (var i = 0; i < abilities.length; i++) {
-                    var ability = abilities[i];
-                    sum += this.calculateMod(character[ability]);
+                    var abi = abilities[i];
+                    sum += this.calculateMod(character.ability[abi]);
                 }
                 return sum;
+            } else {
+                return 0;
+            }
+        },
+        calculateSkill: function (character, abi, skill, level) {
+            if (skill && character.ability) {
+                return this.calculateTotalMod(character.ability[abi], level)
+                    + this.valueOrZero(character.skills[skill].trained)
+                    + this.valueOrZero(character.skills[skill].bonus);
             } else {
                 return 0;
             }

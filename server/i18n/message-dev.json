@@ -37,8 +37,8 @@
         },
         "hp": {
             "title": "Points de vie",
-            "currentHp": "HP",
-            "maxHp": "HP max",
+            "current": "HP",
+            "max": "HP max",
             "bloodied": "Ensanglanté",
             "surge": "Restorations"
         },
