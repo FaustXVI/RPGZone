@@ -1,3 +1,11 @@
+mixin carac(carac)
+    div.form-group
+        label.col-xs-3(for=carac) #{t('character.ability.'+carac)}
+        div.col-xs-3
+            input.form-control(type="number",name=carac,data-ng-model="character."+carac,id=carac)
+        span.col-xs-3(data-ng-bind="calculateMod(character."+carac+")")
+        span.col-xs-3(data-ng-bind="calculateTotalMod(character."+carac+", character.level)")
+
 section
     h1
         a(data-toggle="collapse",data-target="#ability") #{t('character.ability.title')}
@@ -7,39 +15,9 @@ section
             span.col-xs-3
             span.col-xs-3 #{t('character.ability.mod')}
             span.col-xs-3 #{t('character.ability.modAndLevel')}
-        div.form-group
-            label.col-xs-3(for="strength") #{t('character.ability.strength')}
-            div.col-xs-3
-                input#strength.form-control(type="number",name="strength",data-ng-model="character.strength")
-            span.col-xs-3 {{ calculateMod(character.strength) }}
-            span.col-xs-3 {{ calculateTotalMod( character.strength, character.level) }}
-        div.form-group
-            label.col-xs-3(for="constitution") #{t('character.ability.constitution')}
-            div.col-xs-3
-                input#constitution.form-control(type="number",name="constitution",data-ng-model="character.constitution")
-            span.col-xs-3 {{calculateMod(character.constitution)}}
-            span.col-xs-3 {{calculateTotalMod(character.constitution, character.level)}}
-        div.form-group
-            label.col-xs-3(for="dexterity") #{t('character.ability.dexterity')}
-            div.col-xs-3
-                input#dexterity.form-control(type="number",name="dexterity",data-ng-model="character.dexterity")
-            span.col-xs-3 {{calculateMod(character.dexterity)}}
-            span.col-xs-3 {{calculateTotalMod(character.dexterity, character.level)}}
-        div.form-group
-            label.col-xs-3(for="intelligence") #{t('character.ability.intelligence')}
-            div.col-xs-3
-                input#intelligence.form-control(type="number",name="intelligence",data-ng-model="character.intelligence")
-            span.col-xs-3 {{calculateMod(character.intelligence)}}
-            span.col-xs-3 {{calculateTotalMod(character.intelligence, character.level)}}
-        div.form-group
-            label.col-xs-3(for="wisdom") #{t('character.ability.wisdom')}
-            div.col-xs-3
-                input#wisdom.form-control(type="number",name="wisdom",data-ng-model="character.wisdom")
-            span.col-xs-3 {{calculateMod(character.wisdom)}}
-            span.col-xs-3 {{calculateTotalMod(character.wisdom, character.level)}}
-        div.form-group
-            label.col-xs-3(for="charisma") #{t('character.ability.charisma')}
-            div.col-xs-3
-                input#charisma.form-control(type="number",name="charisma",data-ng-model="character.charisma")
-            span.col-xs-3 {{calculateMod(character.charisma)}}
-            span.col-xs-3 {{calculateTotalMod(character.charisma, character.level)}}
+        +carac("strength")
+        +carac("constitution")
+        +carac("dexterity")
+        +carac("intelligence")
+        +carac("wisdom")
+        +carac("charisma")
