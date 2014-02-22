@@ -1,17 +1,13 @@
-var rpgZone = angular.module('characterController', ['characterService', 'arrayUtils', 'calculator']);
+var rpgZone = angular.module('characterController', ['characterService', 'initCharacterUtils', 'arrayUtils', 'calculator']);
 
-rpgZone.controller('characterController', function ($scope, $location, characterService, arrayUtils, calculator) {
-
-    var initDDArrays = function (character) {
-        arrayUtils.initArrays(character, ["notes", "powers", "feats", "equipments"]);
-    };
+rpgZone.controller('characterController', function ($scope, $location, characterService, initCharacterUtils, calculator, arrayUtils) {
 
     var loadCurrentCharacter = function () {
         if ($location.search() && $location.search().id) {
-            $scope.character = characterService.get({characterId: $location.search().id}, initDDArrays);
+            $scope.character = characterService.get({characterId: $location.search().id}, initCharacterUtils.init);
         } else {
             $scope.character = {};
-            initDDArrays($scope.character);
+            initCharacterUtils.init($scope.character);
         }
     };
 
@@ -24,13 +20,8 @@ rpgZone.controller('characterController', function ($scope, $location, character
         }
     };
 
-    $scope.calculateMod = calculator.calculateMod;
-    $scope.calculateTotalMod = calculator.calculateTotalMod;
-    $scope.calculateBloodied = calculator.calculateBloodied;
-    $scope.calculateSurge = calculator.calculateSurge;
-    $scope.calculateHalfLevel = calculator.calculateHalfLevel;
-    $scope.addElementToList = arrayUtils.addElementToList;
-    $scope.removeElementToList = arrayUtils.removeElementToList;
+    calculator.addToScope($scope);
+    arrayUtils.addToScope($scope);
     $scope.submit = saveCharacter;
 
     loadCurrentCharacter();

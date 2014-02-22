@@ -1,0 +1,38 @@
+include selects
+mixin dices(numberModel,valueModel)
+    div.col-xs-3
+        input.form-control(type="number",data-ng-model=numberModel)
+    span.col-xs-3
+        p d
+    div.col-xs-3
+        +dice(valueModel)
+
+mixin vs(attackModel,defenseModel)
+    div.col-xs-3
+        +abilityType(attackModel)
+    div.col-xs-3
+        p VS
+    div.col-xs-3
+        +defenseType(defenseModel)
+
+mixin power(powerList)
+    ul.list-unstyled
+        li.col-xs-12(data-ng-repeat="power in "+powerList)
+            div.form-group
+                label.col-xs-3(for="powerName") #{t('character.powers.name')}
+                div.col-xs-7
+                    input#powerName.form-control(type="text",name="powerName",data-ng-model="power.name")
+                button.btn.btn-danger(type="button",data-ng-click="removeElementToList(character.powers,power)")
+                    span.glyphicon.glyphicon-minus
+            div.form-group
+                label.col-xs-3(for="powerType") #{t('character.powers.attack')}
+                +vs("power.attack","power.defense")
+            div.form-group
+                label.col-xs-3 #{t('character.powers.damagesBase')}
+                +dices("power.diceNumber","power.diceValue")
+            div.form-group
+                textarea.form-control(data-ng-model="power.text")
+            if block
+                block
+        button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")")
+            span.glyphicon.glyphicon-plus

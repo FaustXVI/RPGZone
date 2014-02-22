@@ -1,0 +1,33 @@
+mixin dice(model)
+    select.form-control(data-ng-model=model)
+        option(value="")
+        option 4
+        option 6
+        option 8
+        option 10
+        option 12
+
+mixin powerType(model)
+    select#powerType.form-control(data-ng-model=model)
+        option(value="")
+        option(value="atWill") #{t('character.powers.types.atWill')}
+        option(value="encounter") #{t('character.powers.types.encounter')}
+        option(value="daily") #{t('character.powers.types.daily')}
+
+mixin abilityType(model)
+    select#powerType.form-control(data-ng-model=model)
+        option(value="")
+        option(value="strength") #{t('character.ability.strength')}
+        option(value="constitution") #{t('character.ability.constitution')}
+        option(value="dexterity") #{t('character.ability.dexterity')}
+        option(value="intelligence") #{t('character.ability.intelligence')}
+        option(value="wisdom") #{t('character.ability.wisdom')}
+        option(value="charisma") #{t('character.ability.charisma')}
+
+mixin defenseType(model)
+    select#powerType.form-control(data-ng-model=model)
+        option(value="")
+        option(value="armor") #{t('character.defenses.armor')}
+        option(value="fortitude") #{t('character.defenses.fortitude')}
+        option(value="reflex") #{t('character.defenses.reflex')}
+        option(value="will") #{t('character.defenses.will')}

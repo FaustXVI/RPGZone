@@ -1,12 +1,21 @@
 section
     h1
         a(data-toggle="collapse",data-target="#powers") #{t('character.powers.title')}
-    div#powers.collapse
-        ul.list-unstyled
-            li.col-xs-12(ng-repeat="power in character.powers")
-                button.btn.btn-danger.pull-right(type="button",ng-click="removeElementToList(character.powers,power)")
-                    span.glyphicon.glyphicon-minus
-                div.col-xs-10
-                    textarea.form-control(ng-model="power.text")
-        button.btn.btn-success(type="button",ng-click="addElementToList(character.powers)")
-            span.glyphicon.glyphicon-plus
+    div#powers.collapse.in
+        section
+            h1 #{t('character.powers.atWill')}
+            +power("character.powers.atWill")
+        section
+            h1 #{t('character.powers.encounter')}
+            +power("character.powers.encounter")
+                div.form-group
+                    label.col-xs-3 #{t('character.powers.used')}
+                    div.col-xs-3
+                        input.form-control(type="checkbox",data-ng-model="power.used")
+        section
+            h1 #{t('character.powers.daily')}
+            +power("character.powers.daily")
+                div.form-group
+                    label.col-xs-3 #{t('character.powers.used')}
+                    div.col-xs-3
+                        input.form-control(type="checkbox",data-ng-model="power.used")

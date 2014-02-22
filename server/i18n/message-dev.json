@@ -75,7 +75,14 @@
             "title": "Notes"
         },
         "powers": {
-            "title": "Pouvoirs"
+            "title": "Pouvoirs",
+            "atWill": "À volonté",
+            "encounter": "Rencontre",
+            "daily": "Journalié",
+            "name": "Nom",
+            "used": "Utilisé",
+            "damagesBase": "Dégats de base",
+            "attack": "Attaque"
         },
         "wealth": {
             "title": "Richesses",

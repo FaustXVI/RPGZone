@@ -3,10 +3,10 @@ section
         a(data-toggle="collapse",data-target="#feats") #{t('character.feats.title')}
     div#feats.collapse
         ul.list-unstyled
-            li.col-xs-12(ng-repeat="feat in character.feats")
-                button.btn.btn-danger.pull-right(type="button",ng-click="removeElementToList(character.feats,feat)")
+            li.col-xs-12(data-ng-repeat="feat in character.feats")
+                button.btn.btn-danger.pull-right(type="button",data-ng-click="removeElementToList(character.feats,feat)")
                     span.glyphicon.glyphicon-minus
                 div.col-xs-10
-                    textarea.form-control(ng-model="feat.text")
-        button.btn.btn-success(type="button",ng-click="addElementToList(character.feats)")
+                    textarea.form-control(data-ng-model="feat.text")
+        button.btn.btn-success(type="button",data-ng-click="addElementToList(character.feats)")
             span.glyphicon.glyphicon-plus

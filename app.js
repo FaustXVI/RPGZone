@@ -21,9 +21,9 @@ app.configure(function () {
     app.locals.pretty = true;
 });
 
-var render = function (template) {
+var render = function (template, datas) {
     return function (req, res) {
-        res.render(template);
+        res.render(template, datas);
     };
 };
 

@@ -2,6 +2,10 @@ var arrayUtils = angular.module('arrayUtils', []);
 
 arrayUtils.factory('arrayUtils', function () {
     return {
+        addToScope: function (scope) {
+            scope.addElementToList = this.addElementToList;
+            scope.removeElementToList = this.removeElementToList;
+        },
         addElementToList: function (list) {
             list.push({});
         },

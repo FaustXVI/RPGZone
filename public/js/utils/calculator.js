@@ -2,6 +2,13 @@ var calculator = angular.module('calculator', []);
 
 calculator.factory('calculator', function () {
     return {
+        addToScope: function (scope) {
+            scope.calculateMod = this.calculateMod;
+            scope.calculateTotalMod = this.calculateTotalMod;
+            scope.calculateBloodied = this.calculateBloodied;
+            scope.calculateSurge = this.calculateSurge;
+            scope.calculateHalfLevel = this.calculateHalfLevel;
+        },
         calculateMod: function (value) {
             if (value) {
                 return Math.floor((value - 10) / 2);
