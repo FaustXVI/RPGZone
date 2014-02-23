@@ -9,7 +9,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
                 li(data-ng-repeat="character in characters")
                     a.col-xs-9(data-ng-href="perso.html?id={{ character._id }}",target="_self")
                         | {{ character.id.playerName }} ({{ character.id.name }})
-                    form.col-xs-3(ng-submit="suppress( character._id )")
+                    form.col-xs-3(ng-submit="suppress( character )")
                         button.btn.btn-danger.pull-right(type="submit")
                             span.glyphicon.glyphicon-remove
         form(action="perso.html",method="get")
