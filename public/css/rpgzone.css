@@ -1,3 +1,24 @@
+section.tab-pane > div.form-group:nth-child(odd),
+ul.list-unstyled > li:nth-child(odd) {
+    background-color: #eeeeee;
+}
+
+section.tab-pane > div.form-group:nth-child(even),
+ul.list-unstyled > li:nth-child(even) {
+    background-color: #dddddd;
+}
+
+label {
+    line-height: 34px;
+    margin-bottom: 0;
+}
+
+.form-group {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 0;
+}
+
 @media screen and (max-width: 767px) {
     .row-offcanvas {
         position: relative;

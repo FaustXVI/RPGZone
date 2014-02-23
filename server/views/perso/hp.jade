@@ -4,9 +4,9 @@ mixin hp(label)
 +section("hp")
     +hp("current")
     +hp("max")
-    div.form-group.bg-danger
+    div.form-group.text-danger
         p.col-xs-3 #{t('character.hp.bloodied')}
         p(data-ng-bind="calculateBloodied(character.hp.max)")
-    div.form-group.bg-info
+    div.form-group.text-info
         p.col-xs-3 #{t('character.hp.surge')}
         p(data-ng-bind="calculateSurge(character.hp.max)")
