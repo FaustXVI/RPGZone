@@ -1,7 +1,3 @@
-/*
- * Off Canvas
- * --------------------------------------------------
- */
 @media screen and (max-width: 767px) {
     .row-offcanvas {
         position: relative;
@@ -40,5 +36,15 @@
         position: absolute;
         top: 0;
         width: 50%; /* 6 columns */
+    }
+
+    body {
+        margin-top: 70px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin-top: 20px;
     }
 }

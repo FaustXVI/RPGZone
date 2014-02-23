@@ -8,8 +8,12 @@ html(xmlns="http://www.w3.org/1999/xhtml")
         title #{t('character.sheet')}
         include head
     body.container
+        nav.navbar.navbar-default.navbar-fixed-top.visible-xs
+            div.container
+                button.btn.btn-primary.navbar-btn(data-toggle="offcanvas")
+                    span.glyphicon.glyphicon-chevron-left
         div.row.row-offcanvas.row-offcanvas-left
-            div#sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role="navigation")
+            nav#sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role="navigation")
                 ul.nav.nav-pills.nav-stacked
                     +tab("id")(class="active")
                     +tab("initiative")
@@ -24,8 +28,6 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                     +tab("wealth")
                     +tab("notes")
             div.col-sm-9.col-xs-12
-                button.visible-xs.btn.btn-primary(data-toggle="offcanvas")
-                    span.glyphicon.glyphicon-chevron-left
                 form#sheet(data-ng-submit="submit()",class="form-horizontal",data-ng-controller="characterController",data-ng-app="rpgZone")
                     div.tab-content
                         include mixins/template
