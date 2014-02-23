@@ -1,3 +1,7 @@
+section {
+    margin-bottom: 20px;
+}
+
 section.tab-pane > div.form-group:nth-child(odd),
 ul.list-unstyled > li:nth-child(odd) {
     background-color: #eeeeee;
@@ -13,7 +17,7 @@ label {
     margin-bottom: 0;
 }
 
-.form-group {
+form .form-group, section ul > li {
     padding-bottom: 5px;
     padding-top: 5px;
     margin-bottom: 0;

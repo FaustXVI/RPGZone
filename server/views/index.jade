@@ -4,13 +4,15 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
         title #{t('home.title')}
         include head
     body.container(data-ng-controller="characterListController")
-        div
+        section.col-xs-12
             ul.list-unstyled
-                li(data-ng-repeat="character in characters")
-                    a.col-xs-9(data-ng-href="perso.html?id={{ character._id }}",target="_self")
-                        | {{ character.id.playerName }} ({{ character.id.name }})
-                    form.col-xs-3(ng-submit="suppress( character )")
-                        button.btn.btn-danger.pull-right(type="submit")
+                li.col-xs-12(data-ng-repeat="character in characters")
+                    div.form-group
+                        label.col-xs-9
+                            a(data-ng-href="perso.html?id={{ character._id }}",target="_self")
+                                | {{ character.id.playerName }} ({{ character.id.name }})
+                        button.btn.btn-danger.pull-right(type="button",data-ng-click="suppress( character )")
                             span.glyphicon.glyphicon-remove
-        form(action="perso.html",method="get")
-            input.btn.btn-primary(type="submit",value="#{t('home.button')}")
+        section.col-xs-12
+            form(action="perso.html",method="get")
+                input.btn.btn-primary(type="submit",value="#{t('home.button')}")
