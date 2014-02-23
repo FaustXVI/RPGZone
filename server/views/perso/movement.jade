@@ -1,8 +1,5 @@
 mixin movement(label)
     +entry("movement."+label)(type="number")
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#movement") #{t('character.movement.title')}
-    div#movement.collapse
-        +movement("speed")
++section("movement")
+    +movement("speed")

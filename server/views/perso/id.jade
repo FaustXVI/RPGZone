@@ -1,16 +1,13 @@
 mixin id(label)
     +entry("id."+label)(type!=attributes.type)
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#character-id") #{t('character.id.title')}
-    div#character-id.collapse
-        +id("name")
-        +id("class")
-        +id("race")
-        +id("level")(type="number")
-        +id("gender")
-        +id("alignment")
-        +id("diety")
-        +id("paragonPath")
-        +id("playerName")
++section("id")
+    +id("name")
+    +id("class")
+    +id("race")
+    +id("level")(type="number")
+    +id("gender")
+    +id("alignment")
+    +id("diety")
+    +id("paragonPath")
+    +id("playerName")

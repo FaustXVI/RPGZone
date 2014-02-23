@@ -39,27 +39,24 @@ mixin powerUseable(powerList)
                 input.form-control(type="checkbox",data-ng-model="power.used")
                 | #{t('character.powers.used')}
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#powers") #{t('character.powers.title')}
-    div#powers.collapse
-        section
-            h2
-                a(data-toggle="collapse",data-target="#atWill") #{t('character.powers.atWill')}
-            div#atWill.collapse
-                +power("character.powers.atWill")
-        section
-            h2
-                a(data-toggle="collapse",data-target="#encounter") #{t('character.powers.encounter')}
-            div#encounter.collapse
-                +powerUseable("character.powers.encounter")
-        section
-            h2
-                a(data-toggle="collapse",data-target="#daily") #{t('character.powers.daily')}
-            div#daily.collapse
-                +powerUseable("character.powers.daily")
-        section
-            h2
-                a(data-toggle="collapse",data-target="#utility") #{t('character.powers.utility')}
-            div#utility.collapse
-                +powerSimple("character.powers.utility")
++section("powers")
+    section
+        h2
+            a(data-toggle="collapse",data-target="#atWill") #{t('character.powers.atWill')}
+        div#atWill.collapse
+            +power("character.powers.atWill")
+    section
+        h2
+            a(data-toggle="collapse",data-target="#encounter") #{t('character.powers.encounter')}
+        div#encounter.collapse
+            +powerUseable("character.powers.encounter")
+    section
+        h2
+            a(data-toggle="collapse",data-target="#daily") #{t('character.powers.daily')}
+        div#daily.collapse
+            +powerUseable("character.powers.daily")
+    section
+        h2
+            a(data-toggle="collapse",data-target="#utility") #{t('character.powers.utility')}
+        div#utility.collapse
+            +powerSimple("character.powers.utility")

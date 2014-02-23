@@ -4,7 +4,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
         title #{t('character.sheet')}
         include head
     body.container
-        form#sheet(data-ng-submit="submit()",class="form-horizontal")
+        form#sheet(data-ng-submit="submit()",class="form-horizontal panel-group")
             include mixins/template
             include perso/id
             include perso/initiative
@@ -18,10 +18,11 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controll
             include perso/equipment
             include perso/wealth
             include perso/notes
-            button.btn.btn-success.pull-left(type="submit")
-                span.glyphicon.glyphicon-save
-                span.hidden-xs  #{t('character.save')}
-        form(action="/",method="GET")
-            button.btn.btn-info.pull-right(type="submit")
-                span.glyphicon.glyphicon-list
-                span.hidden-xs  #{t('character.return')}
+            section.panel.btn-group.btn-group-justified
+                div.btn-group
+                    button.btn.btn-success(type="submit")
+                        span.glyphicon.glyphicon-save
+                        span.hidden-xs  #{t('character.save')}
+                a.btn.btn-info(data-ng-href="/")
+                    span.glyphicon.glyphicon-list
+                    span.hidden-xs  #{t('character.return')}

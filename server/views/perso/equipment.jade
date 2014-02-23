@@ -41,8 +41,5 @@ mixin equipmentPowerSimple(powerList)
         button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")")
             span.glyphicon.glyphicon-plus
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#equipments") #{t('character.equipments.title')}
-    div#equipments.collapse
-        +equipmentSimple("character.equipments")
++section("equipments")
+    +equipmentSimple("character.equipments")

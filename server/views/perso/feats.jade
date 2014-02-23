@@ -12,8 +12,5 @@ mixin featSimple(featList)
         button.btn.btn-success(type="button",data-ng-click="addElementToList("+featList+")")
             span.glyphicon.glyphicon-plus
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#feats") #{t('character.feats.title')}
-    div#feats.collapse
-        +featSimple("character.feats")
++section("feats")
+    +featSimple("character.feats")

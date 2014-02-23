@@ -6,18 +6,15 @@ mixin carac(carac)
         span.col-xs-3(data-ng-bind="calculateMod(character.ability."+carac+")")
         span.col-xs-3(data-ng-bind="calculateTotalMod(character.ability."+carac+", character.id.level)")
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#ability") #{t('character.ability.title')}
-    div#ability.collapse
-        div.form-group
-            span.col-xs-3
-            span.col-xs-3
-            span.col-xs-3 #{t('character.ability.mod')}
-            span.col-xs-3 #{t('character.ability.modAndLevel')}
-        +carac("strength")
-        +carac("constitution")
-        +carac("dexterity")
-        +carac("intelligence")
-        +carac("wisdom")
-        +carac("charisma")
++section("ability")
+    div.form-group
+        span.col-xs-3
+        span.col-xs-3
+        span.col-xs-3 #{t('character.ability.mod')}
+        span.col-xs-3 #{t('character.ability.modAndLevel')}
+    +carac("strength")
+    +carac("constitution")
+    +carac("dexterity")
+    +carac("intelligence")
+    +carac("wisdom")
+    +carac("charisma")

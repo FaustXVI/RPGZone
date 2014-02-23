@@ -1,10 +1,7 @@
 mixin wealth(label)
     +entry("wealth."+label)(type="number")
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#wealth") #{t('character.wealth.title')}
-    div#wealth.collapse
-        +wealth("gold")
-        +wealth("silver")
-        +wealth("bronze")
++section("wealth")
+    +wealth("gold")
+    +wealth("silver")
+    +wealth("bronze")

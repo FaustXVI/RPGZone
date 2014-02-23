@@ -7,30 +7,27 @@ mixin skill(skill,ability)
         div.col-xs-3
             input.form-control(type="number",data-ng-model="character.skills."+skill+".bonus")
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#skills") #{t('character.skills.title')}
-    div#skills.collapse
-        div.form-group
-            p.col-xs-3
-            p.col-xs-3 #{t('character.value')}
-            p.col-xs-3 #{t('character.skills.training')}
-            p.col-xs-3 #{t('character.bonus')}
-        +skill("acrobatics","dexterity")
-        +skill("arcana","intelligence")
-        +skill("athletics","strength")
-        +skill("bluff","charisma")
-        +skill("diplomacy","charisma")
-        +skill("dungeoneering","wisdom")
-        +skill("endurance","constitution")
-        +skill("heal","wisdom")
-        +skill("history","intelligence")
-        +skill("insight","wisdom")
-        +skill("intimidate","charisma")
-        +skill("nature","wisdom")
-        +skill("perception","wisdom")
-        +skill("religion","intelligence")
-        +skill("stealth","dexterity")
-        +skill("streetwise","charisma")
-        +skill("thievery","dexterity")
-        +skill("alchemy","dexterity")
++section("skills")
+    div.form-group
+        p.col-xs-3
+        p.col-xs-3 #{t('character.value')}
+        p.col-xs-3 #{t('character.skills.training')}
+        p.col-xs-3 #{t('character.bonus')}
+    +skill("acrobatics","dexterity")
+    +skill("arcana","intelligence")
+    +skill("athletics","strength")
+    +skill("bluff","charisma")
+    +skill("diplomacy","charisma")
+    +skill("dungeoneering","wisdom")
+    +skill("endurance","constitution")
+    +skill("heal","wisdom")
+    +skill("history","intelligence")
+    +skill("insight","wisdom")
+    +skill("intimidate","charisma")
+    +skill("nature","wisdom")
+    +skill("perception","wisdom")
+    +skill("religion","intelligence")
+    +skill("stealth","dexterity")
+    +skill("streetwise","charisma")
+    +skill("thievery","dexterity")
+    +skill("alchemy","dexterity")

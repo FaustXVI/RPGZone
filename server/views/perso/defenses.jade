@@ -5,15 +5,12 @@ mixin def(def)
         div.col-xs-3
             input.form-control(type="number",data-ng-model="character.defenses."+def,id=def)
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#defenses") #{t('character.defenses.title')}
-    div#defenses.collapse
-        div.form-group
-            p.col-xs-3
-            p.col-xs-3 #{t('character.value')}
-            p.col-xs-3 #{t('character.bonus')}
-        +def("armor")
-        +def("fortitude")
-        +def("reflex")
-        +def("will")
++section("defenses")
+    div.form-group
+        p.col-xs-3
+        p.col-xs-3 #{t('character.value')}
+        p.col-xs-3 #{t('character.bonus')}
+    +def("armor")
+    +def("fortitude")
+    +def("reflex")
+    +def("will")

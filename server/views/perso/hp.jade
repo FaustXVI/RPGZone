@@ -1,15 +1,12 @@
 mixin hp(label)
     +entry("hp."+label)(type="number")
 
-section
-    h1
-        a(data-toggle="collapse",data-target="#hp") #{t('character.hp.title')}
-    div#hp.collapse
-        +hp("current")
-        +hp("max")
-        div.form-group.bg-danger
-            p.col-xs-3 #{t('character.hp.bloodied')}
-            p(data-ng-bind="calculateBloodied(character.hp.max)")
-        div.form-group.bg-info
-            p.col-xs-3 #{t('character.hp.surge')}
-            p(data-ng-bind="calculateSurge(character.hp.max)")
++section("hp")
+    +hp("current")
+    +hp("max")
+    div.form-group.bg-danger
+        p.col-xs-3 #{t('character.hp.bloodied')}
+        p(data-ng-bind="calculateBloodied(character.hp.max)")
+    div.form-group.bg-info
+        p.col-xs-3 #{t('character.hp.surge')}
+        p(data-ng-bind="calculateSurge(character.hp.max)")

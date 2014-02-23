@@ -22,3 +22,10 @@ mixin vs(attackModel,defenseModel)
     div.col-xs-3
         +defenseType(defenseModel)
 
+mixin section(name)
+    section.panel.panel-default
+        div.panel-heading(data-toggle="collapse",data-target="#"+name,data-parent="#sheet")
+            h1 #{t('character.'+name+'.title')}
+        div.collapse.panel-body(id=name)
+            if block
+                block
