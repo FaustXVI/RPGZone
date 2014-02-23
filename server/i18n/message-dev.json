@@ -116,6 +116,8 @@
         "bonus": "Bonus",
         "select": "Sélectionner",
         "save": "Sauvegarder",
+        "saved": "Le personnage est sauvegardé",
+        "unsaved": "Le personnage n'est sauvegardé",
         "return": "Retour à la liste des personnages"
     },
     "modal": {

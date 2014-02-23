@@ -1,3 +1,7 @@
+body {
+    margin-top: 70px;
+}
+
 section {
     margin-bottom: 20px;
 }
@@ -21,6 +25,12 @@ form .form-group, section ul > li {
     padding-bottom: 5px;
     padding-top: 5px;
     margin-bottom: 0;
+}
+
+nav.navbar-fixed-top > div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
 }
 
 @media screen and (max-width: 767px) {
@@ -61,15 +71,5 @@ form .form-group, section ul > li {
         position: absolute;
         top: 0;
         width: 50%; /* 6 columns */
-    }
-
-    body {
-        margin-top: 70px;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    body {
-        margin-top: 20px;
     }
 }

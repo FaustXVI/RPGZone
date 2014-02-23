@@ -18,6 +18,7 @@ rpgZone.controller('characterController', function ($scope, $location, character
         } else {
             $scope.character.$update();
         }
+        $scope.form.$setPristine();
     };
 
     calculator.addToScope($scope);

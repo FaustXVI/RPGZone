@@ -4,6 +4,8 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
         title #{t('home.title')}
         include head
     body.container(data-ng-controller="characterListController")
+        nav.navbar.navbar-default.navbar-fixed-top
+            div.container
         section.col-xs-12
             ul.list-unstyled
                 li.col-xs-12(data-ng-repeat="character in characters")

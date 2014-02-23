@@ -7,11 +7,14 @@ html(xmlns="http://www.w3.org/1999/xhtml")
     head
         title #{t('character.sheet')}
         include head
-    body.container
-        nav.navbar.navbar-default.navbar-fixed-top.visible-xs
+    body.container(data-ng-controller="characterController",data-ng-app="rpgZone")
+        nav.navbar.navbar-default.navbar-fixed-top
             div.container
-                button.btn.btn-primary.navbar-btn(data-toggle="offcanvas")
-                    span.glyphicon.glyphicon-chevron-left
+                button.visible-xs.btn.btn-primary(data-toggle="offcanvas")
+                    span.glyphicon.glyphicon-list
+                a.btn.btn-info.pull-right(data-ng-href="/",target="_self")
+                    span.glyphicon.glyphicon-user
+                    span.hidden-xs  #{t('character.return')}
         div.row.row-offcanvas.row-offcanvas-left
             nav#sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role="navigation")
                 ul.nav.nav-pills.nav-stacked
@@ -28,7 +31,7 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                     +tab("wealth")
                     +tab("notes")
             div.col-sm-9.col-xs-12
-                form#sheet(data-ng-submit="submit()",class="form-horizontal",data-ng-controller="characterController",data-ng-app="rpgZone")
+                form#sheet(data-ng-submit="submit()",class="form-horizontal",name="form")
                     div.tab-content
                         include mixins/template
                         include perso/id
@@ -43,11 +46,14 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                         include perso/equipment
                         include perso/wealth
                         include perso/notes
-                    section.panel.btn-group.btn-group-justified.col-sm-12
-                        div.btn-group
-                            button.btn.btn-success(type="submit")
-                                span.glyphicon.glyphicon-save
-                                span.hidden-xs  #{t('character.save')}
-                        a.btn.btn-info(data-ng-href="/",target="_self")
-                            span.glyphicon.glyphicon-list
-                            span.hidden-xs  #{t('character.return')}
+                    section.col-xs-12
+                        div.alert.alert-success(data-ng-show="form.$pristine")
+                            p #{t('character.saved')}
+                        div.alert.alert-danger(data-ng-show="form.$dirty")
+                            div
+                                p #{t('character.unsaved')}
+                            div.btn-group.btn-group-justified
+                                div.btn-group
+                                    button.btn.btn-success(type="submit")
+                                        span.glyphicon.glyphicon-save
+                                        span.hidden-xs  #{t('character.save')}
