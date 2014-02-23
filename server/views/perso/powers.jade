@@ -5,8 +5,7 @@ mixin powerSimple(powerList)
                 label.col-xs-3 #{t('character.powers.name')}
                 div.col-xs-7
                     input.form-control(type="text",data-ng-model="power.name")
-                button.btn.btn-danger(type="button",data-ng-click="removeElementToList("+powerList+",power)")
-                    span.glyphicon.glyphicon-minus
+                +removeButton(powerList,"power")
             if block
                 block
             div.form-group

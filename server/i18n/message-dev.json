@@ -117,5 +117,10 @@
         "select": "Sélectionner",
         "save": "Sauvegarder",
         "return": "Retour à la liste des personnages"
+    },
+    "modal": {
+        "confirmListDeletion": "Voulez vous vraiment supprimer cet element ?",
+        "ok": "Oui",
+        "cancel": "Non"
     }
 }

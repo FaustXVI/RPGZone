@@ -25,3 +25,8 @@ mixin vs(attackModel,defenseModel)
 mixin section(name)
     section.tab-pane(id=name,class!=attributes.class)
         block
+
+mixin removeButton(list,elt)
+    button.btn.btn-danger.pull-right(type="button",data-ng-click="open("+list+","+elt+")")
+        span.glyphicon.glyphicon-remove
+

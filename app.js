@@ -33,6 +33,7 @@ i18n.registerAppHelper(app);
 app.get('/', render('index'));
 app.get('/index.html', render('index'));
 app.get('/perso.html', render('perso'));
+app.get('/modals/confirmDeleteFromList.html', render('modals/confirmDeleteFromList'));
 app.get('/characters', characters.findAll);
 app.get('/characters/:id', characters.findById);
 app.post('/characters', characters.addCharacter);

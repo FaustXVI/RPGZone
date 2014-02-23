@@ -1,8 +1,7 @@
 +section("notes")
     ul.list-unstyled
         li.col-xs-12(data-ng-repeat="note in character.notes")
-            button.btn.btn-danger.pull-right(type="button",data-ng-click="removeElementToList(character.notes,note)")
-                span.glyphicon.glyphicon-minus
+            +removeButton("character.notes","note")
             div.col-xs-10
                 textarea.form-control(data-ng-model="note.text")
     button.btn.btn-success(type="button",data-ng-click="addElementToList(character.notes)")

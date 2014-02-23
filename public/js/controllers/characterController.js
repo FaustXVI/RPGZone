@@ -1,6 +1,6 @@
-var rpgZone = angular.module('characterController', ['characterService', 'initCharacterUtils', 'arrayUtils', 'calculator']);
+var rpgZone = angular.module('characterController', ['characterService', 'initCharacterUtils', 'arrayUtils', 'calculator', 'ui.bootstrap']);
 
-rpgZone.controller('characterController', function ($scope, $location, characterService, initCharacterUtils, calculator, arrayUtils) {
+rpgZone.controller('characterController', function ($scope, $location, characterService, initCharacterUtils, calculator, arrayUtils, $modal) {
 
     var loadCurrentCharacter = function () {
         if ($location.search() && $location.search().id) {
@@ -25,5 +25,36 @@ rpgZone.controller('characterController', function ($scope, $location, character
     $scope.createEquipment = initCharacterUtils.createEquipment;
     $scope.submit = saveCharacter;
 
+    $scope.open = function (list, elt) {
+        var modalInstance = $modal.open({
+            templateUrl: "modals/confirmDeleteFromList.html",
+            controller: ModalInstanceCtrl,
+            resolve: {
+                item: function () {
+                    return elt;
+                }
+            }
+        });
+
+        modalInstance.result.then(function () {
+            arrayUtils.removeElementToList(list, elt);
+        })
+
+    };
+
+    var ModalInstanceCtrl = function ($scope, $modalInstance, item) {
+
+        $scope.item = item;
+
+        $scope.ok = function () {
+            $modalInstance.close(item);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    };
+
     loadCurrentCharacter();
-});
+})
+;
