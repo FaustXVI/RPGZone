@@ -23,9 +23,6 @@ mixin vs(attackModel,defenseModel)
         +defenseType(defenseModel)
 
 mixin section(name)
-    section.panel.panel-default
-        div.panel-heading(data-toggle="collapse",data-target="#"+name,data-parent="#sheet")
-            h1 #{t('character.'+name+'.title')}
-        div.collapse.panel-body(id=name)
-            if block
-                block
+    section.tab-pane(id=name,class!=attributes.class)
+        if block
+            block

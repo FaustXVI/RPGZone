@@ -1,28 +1,51 @@
+mixin tab(name)
+    li(class!=attributes.class)
+        a(data-toggle="tab",href="#"+name) #{t('character.'+name+'.title')}
+
 doctype html
-html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone",data-ng-controller="characterController")
+html(xmlns="http://www.w3.org/1999/xhtml")
     head
         title #{t('character.sheet')}
         include head
     body.container
-        form#sheet(data-ng-submit="submit()",class="form-horizontal panel-group")
-            include mixins/template
-            include perso/id
-            include perso/initiative
-            include perso/movement
-            include perso/ability
-            include perso/hp
-            include perso/defenses
-            include perso/skills
-            include perso/powers
-            include perso/feats
-            include perso/equipment
-            include perso/wealth
-            include perso/notes
-            section.panel.btn-group.btn-group-justified
-                div.btn-group
-                    button.btn.btn-success(type="submit")
-                        span.glyphicon.glyphicon-save
-                        span.hidden-xs  #{t('character.save')}
-                a.btn.btn-info(data-ng-href="/")
-                    span.glyphicon.glyphicon-list
-                    span.hidden-xs  #{t('character.return')}
+        div.row.row-offcanvas.row-offcanvas-left
+            div#sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role="navigation")
+                ul.nav.nav-pills.nav-stacked
+                    +tab("id")(class="active")
+                    +tab("initiative")
+                    +tab("movement")
+                    +tab("ability")
+                    +tab("hp")
+                    +tab("defenses")
+                    +tab("skills")
+                    +tab("powers")
+                    +tab("feats")
+                    +tab("equipments")
+                    +tab("wealth")
+                    +tab("notes")
+            div.col-sm-9.col-xs-12
+                button.visible-xs.btn.btn-primary(data-toggle="offcanvas")
+                    span.glyphicon.glyphicon-chevron-left
+                form#sheet(data-ng-submit="submit()",class="form-horizontal",data-ng-controller="characterController",data-ng-app="rpgZone")
+                    div.tab-content
+                        include mixins/template
+                        include perso/id
+                        include perso/initiative
+                        include perso/movement
+                        include perso/ability
+                        include perso/hp
+                        include perso/defenses
+                        include perso/skills
+                        include perso/powers
+                        include perso/feats
+                        include perso/equipment
+                        include perso/wealth
+                        include perso/notes
+                    section.panel.btn-group.btn-group-justified.col-sm-12
+                        div.btn-group
+                            button.btn.btn-success(type="submit")
+                                span.glyphicon.glyphicon-save
+                                span.hidden-xs  #{t('character.save')}
+                        a.btn.btn-info(data-ng-href="/",target="_self")
+                            span.glyphicon.glyphicon-list
+                            span.hidden-xs  #{t('character.return')}
