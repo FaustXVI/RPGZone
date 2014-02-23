@@ -105,7 +105,8 @@
             "head": "Tête",
             "neck": "Cou",
             "ring": "Anneau",
-            "waist": "Taille"
+            "waist": "Taille",
+            "other": "Autre"
         },
         "feats": {
             "title": "Talents",
@@ -113,6 +114,7 @@
         },
         "value": "Valeur",
         "bonus": "Bonus",
+        "select": "Sélectionner",
         "save": "Sauvegarder",
         "return": "Retour à la liste des personnages"
     }

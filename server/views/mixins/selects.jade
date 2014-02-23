@@ -1,6 +1,6 @@
 mixin dice(model)
     select.form-control(data-ng-model=model)
-        option(value="")
+        option(value="") #{t('character.select')}
         option 4
         option 6
         option 8
@@ -8,14 +8,14 @@ mixin dice(model)
         option 12
 
 mixin powerType(model)
-    select#powerType.form-control(data-ng-model=model)
-        option(value="")
+    select.form-control(data-ng-model=model)
+        option(value="") #{t('character.select')}
         option(value="atWill") #{t('character.powers.atWill')}
         option(value="encounter") #{t('character.powers.encounter')}
         option(value="daily") #{t('character.powers.daily')}
 
 mixin abilityType(model)
-    select#powerType.form-control(data-ng-model=model,multiple!=attributes.multiple)
+    select.form-control(data-ng-model=model,multiple!=attributes.multiple,)
         option(value="strength") #{t('character.ability.strength')}
         option(value="constitution") #{t('character.ability.constitution')}
         option(value="dexterity") #{t('character.ability.dexterity')}
@@ -24,16 +24,15 @@ mixin abilityType(model)
         option(value="charisma") #{t('character.ability.charisma')}
 
 mixin defenseType(model)
-    select#powerType.form-control(data-ng-model=model)
-        option(value="")
+    select.form-control(data-ng-model=model)
+        option(value="") #{t('character.select')}
         option(value="armor") #{t('character.defenses.armor')}
         option(value="fortitude") #{t('character.defenses.fortitude')}
         option(value="reflex") #{t('character.defenses.reflex')}
         option(value="will") #{t('character.defenses.will')}
 
 mixin position(model)
-    select#position.form-control(data-ng-model=model)
-        option(value="")
+    select.form-control(data-ng-model=model)
         option(value="weapon") #{t('character.equipments.weapon')}
         option(value="armor") #{t('character.equipments.armor')}
         option(value="arms") #{t('character.equipments.arms')}
@@ -43,3 +42,4 @@ mixin position(model)
         option(value="neck") #{t('character.equipments.neck')}
         option(value="ring") #{t('character.equipments.ring')}
         option(value="waist") #{t('character.equipments.waist')}
+        option(value="") #{t('character.equipments.other')}
