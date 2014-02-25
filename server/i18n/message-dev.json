@@ -8,7 +8,7 @@
         "id": {
             "title": "Id",
             "name": "Nom",
-            "class": "Class",
+            "class": "Classe",
             "race": "Race",
             "level": "Niveau",
             "gender": "Genre",
@@ -30,7 +30,7 @@
             "modAndLevel": "Mod. + ½ lvl",
             "strength": "Force",
             "constitution": "Constitution",
-            "dexterity": "Dexterity",
+            "dexterity": "Dexterité",
             "intelligence": "Intelligence",
             "wisdom": "Sagesse",
             "charisma": "Charisme"
@@ -39,14 +39,14 @@
             "title": "Points de vie",
             "current": "HP",
             "max": "HP max",
-            "bloodied": "Ensanglanté",
+            "bloodied": "Péril",
             "surge": "Restorations"
         },
         "defenses": {
             "title": "Défenses",
             "armor": "Capacité d'armure",
-            "fortitude": "Courage",
-            "reflex": "Réflexe",
+            "fortitude": "Vigueur",
+            "reflex": "Réfflexes",
             "will": "Volonté"
         },
         "skills": {
@@ -56,7 +56,7 @@
             "arcana": "Arcanes",
             "athletics": "Athlétisme",
             "bluff": "Bluff",
-            "diplomacy": "Diplomacie",
+            "diplomacy": "Diplomatie",
             "dungeoneering": "Exploration",
             "endurance": "Endurance",
             "heal": "Soins",
@@ -68,7 +68,7 @@
             "religion": "Religion",
             "stealth": "Discretion",
             "streetwise": "Connaissance de la rue",
-            "thievery": "Vol",
+            "thievery": "Larcin",
             "alchemy": "Alchimie"
         },
         "notes": {
@@ -85,7 +85,7 @@
             "used": "Utilisé",
             "damages": "Dégats",
             "attack": "Attaque",
-            "damagesModifiers": "Modifier de dégats"
+            "damagesModifiers": "Modificateur de dégats"
         },
         "wealth": {
             "title": "Richesses",
@@ -100,7 +100,7 @@
             "weapon": "Arme",
             "armor": "Armure",
             "arms": "Bras",
-            "feet": "Pied",
+            "feet": "Pieds",
             "hands": "Mains",
             "head": "Tête",
             "neck": "Cou",
@@ -117,11 +117,11 @@
         "select": "Sélectionner",
         "save": "Sauvegarder",
         "saved": "Le personnage est sauvegardé",
-        "unsaved": "Le personnage n'est sauvegardé",
+        "unsaved": "Le personnage n'est pas encore sauvegardé",
         "return": "Retour à la liste des personnages"
     },
     "modal": {
-        "confirmListDeletion": "Voulez vous vraiment supprimer cet element ?",
+        "confirmListDeletion": "Voulez vous vraiment supprimer cet élément ?",
         "ok": "Oui",
         "cancel": "Non"
     }
