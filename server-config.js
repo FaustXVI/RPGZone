@@ -34,10 +34,10 @@ app.get('/', render('index'));
 app.get('/index.html', render('index'));
 app.get('/perso.html', render('perso'));
 app.get('/modals/confirmDeleteFromList.html', render('modals/confirmDeleteFromList'));
-app.get('/characters', characters.findAll);
-app.get('/characters/:id', characters.findById);
-app.post('/characters', characters.addCharacter);
-app.put('/characters/:id', characters.updateCharacter);
-app.delete('/characters/:id', characters.deleteCharacter);
+app.get('/characters', characters.all);
+app.get('/characters/:id', characters.get);
+app.post('/characters', characters.add);
+app.put('/characters/:id', characters.update);
+app.delete('/characters/:id', characters.suppress);
 
 module.exports = app;
