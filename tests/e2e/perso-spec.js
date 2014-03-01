@@ -1,4 +1,4 @@
-var reset = require('characterDAOTest').reset;
+var reset = require('./characterDAOTest').reset;
 
 describe('Character creation page', function () {
 

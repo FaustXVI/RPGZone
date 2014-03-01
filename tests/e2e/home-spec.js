@@ -1,5 +1,5 @@
-var reset = require('characterDAOTest').reset;
-var insert = require('characterDAOTest').insert;
+var reset = require('./characterDAOTest').reset;
+var insert = require('./characterDAOTest').insert;
 
 
 describe('Homepage', function () {
