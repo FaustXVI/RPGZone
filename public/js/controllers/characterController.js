@@ -14,7 +14,9 @@ rpgZone.controller('characterController', function ($scope, $location, character
     var saveCharacter = function () {
         if (!$scope.character._id) {
             $scope.character = new characterService($scope.character);
-            $scope.character.$save();
+            $scope.character.$save().then(function (res) {
+                $location.search({id: res._id});
+            });
         } else {
             $scope.character.$update();
         }

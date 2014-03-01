@@ -1,3 +1,4 @@
 var app = require('./server-config');
-app.listen(8080);
-console.log('Listening on port 8080');
+var port = 8080;
+app.listen(port);
+console.log('Listening on port ' + port);

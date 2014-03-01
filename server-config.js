@@ -7,7 +7,7 @@ var i18n = require("i18next");
 i18n.init({
     ignoreRoutes: [ 'css/', 'js/'],
     ns: 'message',
-    debug: true,
+    debug: false,
     resGetPath: 'server/i18n/__ns__-__lng__.json'
 });
 

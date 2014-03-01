@@ -1,6 +1,6 @@
 mixin tab(name)
     li(class!=attributes.class)
-        a(data-toggle="tab",href="#"+name) #{t('character.'+name+'.title')}
+        a(data-toggle="tab",href="#"+name,id=name+"Button") #{t('character.'+name+'.title')}
 
 doctype html
 html(xmlns="http://www.w3.org/1999/xhtml")
@@ -54,6 +54,6 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                                 p #{t('character.unsaved')}
                             div.btn-group.btn-group-justified
                                 div.btn-group
-                                    button.btn.btn-success(type="submit")
+                                    button#saveButton.btn.btn-success(type="submit")
                                         span.glyphicon.glyphicon-save
                                         span.hidden-xs  #{t('character.save')}
