@@ -8,7 +8,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
             div.container
         section.col-xs-12
             ul.list-unstyled
-                li.col-xs-12(data-ng-repeat="character in characters")
+                li.character.col-xs-12(data-ng-repeat="character in characters")
                     div.form-group
                         label.col-xs-9
                             a(data-ng-href="perso.html?id={{ character._id }}",target="_self")
@@ -17,4 +17,4 @@ html(xmlns="http://www.w3.org/1999/xhtml",data-ng-app="rpgZone")
                             span.glyphicon.glyphicon-remove
         section.col-xs-12
             form(action="perso.html",method="get")
-                input.btn.btn-primary(type="submit",value="#{t('home.button')}")
+                input#createCharacter.btn.btn-primary(type="submit",value="#{t('home.button')}")

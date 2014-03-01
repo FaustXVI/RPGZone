@@ -3,5 +3,5 @@ div.modal-header
 div.modal-body
     p {{ item.name }}
 div.modal-footer
-    button.btn.btn-primary(ng-click="ok()") #{t('modal.ok')}
-    button.btn.btn-danger(ng-click="cancel()") #{t('modal.cancel')}
+    button#validate.btn.btn-primary(ng-click="ok()") #{t('modal.ok')}
+    button#invalidate.btn.btn-danger(ng-click="cancel()") #{t('modal.cancel')}
