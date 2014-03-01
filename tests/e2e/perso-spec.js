@@ -3,6 +3,7 @@ var reset = require('./characterDAOTest').reset;
 function waitForAngular() {
     protractor.getInstance().waitForAngular();
 }
+
 describe('Character creation page', function () {
 
     var saveButton;
