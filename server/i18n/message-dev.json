@@ -83,6 +83,7 @@
             "type": "Type",
             "name": "Nom",
             "used": "Utilisé",
+            "reset": "Reset",
             "damages": "Dégats",
             "attack": "Attaque",
             "damagesModifiers": "Modificateur de dégats"
