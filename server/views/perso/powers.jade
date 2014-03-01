@@ -1,27 +1,27 @@
-mixin powerSimple(powerList)
+mixin powerSimple(powerList,nameSpace)
     ul.list-unstyled
         li.col-xs-12(data-ng-repeat="power in "+powerList)
             div.form-group
                 label.col-xs-3 #{t('character.powers.name')}
                 div.col-xs-7
-                    input.form-control(type="text",data-ng-model="power.name")
+                    input.form-control(type="text",data-ng-model="power.name",id=nameSpace + "-name-{{$index}}")
                 +removeButton(powerList,"power")
             if block
                 block
             div.form-group
-                textarea.form-control(data-ng-model="power.text")
-    button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")")
+                textarea.form-control(data-ng-model="power.text",id=nameSpace + "-text-{{$index}}")
+    button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")",id=nameSpace + "Add")
         span.glyphicon.glyphicon-plus
 
-mixin power(powerList)
-    +powerSimple(powerList)
+mixin power(powerList,nameSpace)
+    +powerSimple(powerList,nameSpace)
         div.form-group
             label.col-xs-3 #{t('character.powers.attack')}
             +vs("power.attack","power.defense")
         div.form-group
             label.col-xs-3 #{t('character.powers.damages')}
             div.col-xs-3
-                input.form-control(type="number",data-ng-model=numberModel)
+                input.form-control(type="number",data-ng-model="power.numberDice",id=nameSpace + "-numberDice-{{$index}}")
             span.col-xs-3
                 | [A] + {{calculateSumMod(character,power.damagesModifiers)}}
         div.form-group
@@ -31,8 +31,8 @@ mixin power(powerList)
         if block
             block
 
-mixin powerUseable(powerList)
-    +power(powerList)
+mixin powerUseable(powerList,nameSpace)
+    +power(powerList,nameSpace)
         div.form-group.checkbox
             label
                 input.form-control(type="checkbox",data-ng-model="power.used")
@@ -41,21 +41,21 @@ mixin powerUseable(powerList)
 +section("powers")
     section
         h2
-            a(data-toggle="collapse",data-target="#atWill") #{t('character.powers.atWill')}
+            a(data-toggle="collapse",data-target="#atWill",id="atWillShow") #{t('character.powers.atWill')}
         div#atWill.collapse
-            +power("character.powers.atWill")
+            +power("character.powers.atWill","atWill")
     section
         h2
-            a(data-toggle="collapse",data-target="#encounter") #{t('character.powers.encounter')}
+            a(data-toggle="collapse",data-target="#encounter",id="encounterShow") #{t('character.powers.encounter')}
         div#encounter.collapse
-            +powerUseable("character.powers.encounter")
+            +powerUseable("character.powers.encounter","encounter")
     section
         h2
-            a(data-toggle="collapse",data-target="#daily") #{t('character.powers.daily')}
+            a(data-toggle="collapse",data-target="#daily",id="dailyShow") #{t('character.powers.daily')}
         div#daily.collapse
-            +powerUseable("character.powers.daily")
+            +powerUseable("character.powers.daily","daily")
     section
         h2
-            a(data-toggle="collapse",data-target="#utility") #{t('character.powers.utility')}
+            a(data-toggle="collapse",data-target="#utility",id="utilityShow") #{t('character.powers.utility')}
         div#utility.collapse
-            +powerSimple("character.powers.utility")
+            +powerSimple("character.powers.utility","utility")

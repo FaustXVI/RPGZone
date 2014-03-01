@@ -3,9 +3,9 @@ mixin skill(skill,ability)
         label.col-xs-3 #{t('character.skills.'+skill)}
         p.col-xs-3.text-center(data-ng-bind="calculateSkill(character,\""+ability+"\",\""+skill+"\",character.id.level)")
         div.col-xs-3
-            input.form-control(type="number",data-ng-model="character.skills."+skill+".trained")
+            input.form-control(type="number",data-ng-model="character.skills."+skill+".trained",id=skill+"-trained")
         div.col-xs-3
-            input.form-control(type="number",data-ng-model="character.skills."+skill+".bonus")
+            input.form-control(type="number",data-ng-model="character.skills."+skill+".bonus",id=skill+"-bonus")
 
 +section("skills")
     div.form-group

@@ -4,7 +4,7 @@ mixin equipmentSimple(equipmentList)
             div.form-group
                 label.col-xs-3 #{t('character.equipments.name')}
                 div.col-xs-7
-                    input.form-control(type="text",data-ng-model="equipment.name")
+                    input.form-control(type="text",data-ng-model="equipment.name",id="equipment-name-{{$index}}")
                 +removeButton(equipmentList,"equipment")
             div.form-group
                 label.col-xs-3 #{t('character.equipments.position')}
@@ -16,8 +16,8 @@ mixin equipmentSimple(equipmentList)
             if block
                 block
             div.form-group
-                textarea.form-control(data-ng-model="equipment.text")
-    button.btn.btn-success(type="button",data-ng-click="addElementToList("+equipmentList+",createEquipment)")
+                textarea.form-control(data-ng-model="equipment.text",id="equipment-text-{{$index}}")
+    button.btn.btn-success(type="button",data-ng-click="addElementToList("+equipmentList+",createEquipment)",id="equipmentAdd")
         span.glyphicon.glyphicon-plus
 
 mixin equipmentPowerSimple(powerList)

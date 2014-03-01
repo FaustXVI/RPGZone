@@ -3,6 +3,6 @@
         li.col-xs-12(data-ng-repeat="note in character.notes")
             +removeButton("character.notes","note")
             div.col-xs-10
-                textarea.form-control(data-ng-model="note.text")
-    button.btn.btn-success(type="button",data-ng-click="addElementToList(character.notes)")
+                textarea.form-control(data-ng-model="note.text",id="note-text-{{$index}}")
+    button.btn.btn-success(type="button",data-ng-click="addElementToList(character.notes)",id="noteAdd")
         span.glyphicon.glyphicon-plus
