@@ -16,34 +16,50 @@ describe('Character creation page', function () {
         element(by.id(currentSection + "Button")).click();
     }
 
-    function checkSaveButton() {
+    function checkSaveButton(callBack) {
         expect(saveButton.isDisplayed()).toBe(true, "Save button is not display");
         saveButton.click();
         expect(saveButton.isDisplayed()).toBe(false, "Save button is still display");
-    }
-
-    function checkFieldSaved(model, value) {
         var currentUrl = browser.getCurrentUrl();
         expect(currentUrl).toMatch(/http:\/\/localhost:8080\/perso.html\?id=[0-9a-f]+/, "Url should change to match character id");
         currentUrl.then(function (res) {
             browser.get(res);
             clickSectionButton();
-            var field = element(by.model(model));
-            expect(field.getAttribute("value")).toEqual(value, model + " value should be " + value);
+            callBack();
         });
+    }
+
+    function checkFieldSaved(model, value) {
+        var field = element(by.model(model));
+        expect(field.getAttribute("value")).toEqual(value, model + " value should be " + value);
     }
 
     function checkNoValue(field) {
         expect(field.getAttribute("value")).toEqual("", field + " value should be null");
     }
 
-    function checkTextField(model, value) {
+    function sendKeysToEmptyField(model, value) {
         var field = element(by.model(model));
         checkNoValue(field);
         field.sendKeys(value);
-        checkSaveButton();
-        checkFieldSaved(model, value);
     }
+
+
+    function checkFields(fields, idNameInScope) {
+        var field;
+        var i;
+        for (i = 0; i < fields.length; i++) {
+            field = fields[i];
+            sendKeysToEmptyField(idNameInScope + "." + field, "" + i);
+        }
+        checkSaveButton(function () {
+            for (i = 0; i < fields.length; i++) {
+                field = fields[i];
+                checkFieldSaved(idNameInScope + "." + field, "" + i);
+            }
+        });
+    }
+
 
     describe('id section', function () {
 
@@ -54,52 +70,9 @@ describe('Character creation page', function () {
             clickSectionButton();
         });
 
-        it('should have a text field for name', function () {
-            var model = idNameInScope + ".name";
-            var value = "testName";
-            checkTextField(model, value);
-        });
-
-        it('should have a text field for class', function () {
-            var model = idNameInScope + ".class";
-            var value = "testClass";
-            checkTextField(model, value);
-        });
-
-        it('should have a text field for race', function () {
-            var model = idNameInScope + ".race";
-            var value = "testRace";
-            checkTextField(model, value);
-        });
-
-        it('should have a text field for level', function () {
-            var model = idNameInScope + ".level";
-            var value = "12";
-            checkTextField(model, value);
-        });
-
-        it('should have a text field for gender', function () {
-            var model = idNameInScope + ".gender";
-            var value = "testGender";
-            checkTextField(model, value);
-        });
-
-        it('should have a text field for alignment', function () {
-            var model = idNameInScope + ".alignment";
-            var value = "testAlignment";
-            checkTextField(model, value);
-        });
-
-        it('should have a text field for paragon path', function () {
-            var model = idNameInScope + ".paragonPath";
-            var value = "testParagonPath";
-            checkTextField(model, value);
-        });
-
-        it('should have a text field for player name', function () {
-            var model = idNameInScope + ".playerName";
-            var value = "testPlayerName";
-            checkTextField(model, value);
+        it('should have a text field for each id field', function () {
+            var fields = ["name", "class", "race", "level", "gender", "diety", "alignment", "paragonPath", "playerName"];
+            checkFields(fields, idNameInScope);
         });
 
     });
@@ -113,11 +86,11 @@ describe('Character creation page', function () {
             clickSectionButton();
         });
 
-        it('should have a text field for speed', function () {
-            var model = idNameInScope + ".speed";
-            var value = "42";
-            checkTextField(model, value);
+        it('should have a text field for each ability', function () {
+            var fields = ["speed"];
+            checkFields(fields, idNameInScope);
         });
+
     });
 
     describe('ability section', function () {
@@ -129,40 +102,81 @@ describe('Character creation page', function () {
             clickSectionButton();
         });
 
-        it('should have a text field for strength', function () {
-            var model = idNameInScope + ".strength";
-            var value = "42";
-            checkTextField(model, value);
+        it('should have a text field for each ability', function () {
+            var fields = ["strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"];
+            checkFields(fields, idNameInScope);
         });
 
-        it('should have a text field for constitution', function () {
-            var model = idNameInScope + ".constitution";
-            var value = "42";
-            checkTextField(model, value);
+    });
+
+    describe('hp section', function () {
+
+        var idNameInScope = characterNameInScope + ".hp";
+
+        beforeEach(function () {
+            currentSection = "hp";
+            clickSectionButton();
         });
 
-        it('should have a text field for dexterity', function () {
-            var model = idNameInScope + ".dexterity";
-            var value = "42";
-            checkTextField(model, value);
+        it('should have a text field for current and max hp', function () {
+            var fields = ["current", "max"];
+            checkFields(fields, idNameInScope);
         });
 
-        it('should have a text field for intelligence', function () {
-            var model = idNameInScope + ".intelligence";
-            var value = "42";
-            checkTextField(model, value);
+    });
+
+    describe('defenses section', function () {
+
+        var idNameInScope = characterNameInScope + ".defenses";
+
+        beforeEach(function () {
+            currentSection = "defenses";
+            clickSectionButton();
         });
 
-        it('should have a text field for wisdom', function () {
-            var model = idNameInScope + ".wisdom";
-            var value = "42";
-            checkTextField(model, value);
+        it('should have a text field for each defense', function () {
+            var fields = ["armor", "fortitude", "reflex", "will"];
+            checkFields(fields, idNameInScope);
         });
 
-        it('should have a text field for charisma', function () {
-            var model = idNameInScope + ".charisma";
-            var value = "42";
-            checkTextField(model, value);
+    });
+
+    describe('skills section', function () {
+
+        var idNameInScope = characterNameInScope + ".skills";
+
+        beforeEach(function () {
+            currentSection = "skills";
+            clickSectionButton();
+        });
+
+        it('should have a text field for training and bonus of each skill', function () {
+            var skills = [
+                "acrobatics",
+                "arcana",
+                "athletics",
+                "bluff",
+                "diplomacy",
+                "dungeoneering",
+                "endurance",
+                "heal",
+                "history",
+                "insight",
+                "intimidate",
+                "nature",
+                "perception",
+                "religion",
+                "stealth",
+                "streetwise",
+                "thievery",
+                "alchemy"
+            ];
+            var fields = [];
+            for (var i = 0; i < skills.length; i++) {
+                fields.push(skills[i] + ".trained");
+                fields.push(skills[i] + ".bonus");
+            }
+            checkFields(fields, idNameInScope);
         });
 
     });
