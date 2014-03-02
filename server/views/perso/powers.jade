@@ -17,7 +17,7 @@ mixin power(powerList,nameSpace)
     +powerSimple(powerList,nameSpace)
         div.form-group
             label.col-xs-3 #{t('character.powers.attack')}
-            +vs("power.attack","power.defense")
+            +vs("power.attack","power.defense")(id="vs-"+nameSpace + "-{{$index}}")
         div.form-group
             label.col-xs-3 #{t('character.powers.damages')}
             div.col-xs-3
@@ -27,7 +27,7 @@ mixin power(powerList,nameSpace)
         div.form-group
             label.col-xs-3 #{t('character.powers.damagesModifiers')}
             div.col-xs-9
-                +abilityType("power.damagesModifiers")(multiple="multiple")
+                +abilityType("power.damagesModifiers")(multiple="multiple",id="ability-modifier-"+nameSpace + "-{{$index}}")
         if block
             block
 

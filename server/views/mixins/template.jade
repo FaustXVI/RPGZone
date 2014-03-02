@@ -16,11 +16,11 @@ mixin dices(numberModel,valueModel)
 
 mixin vs(attackModel,defenseModel)
     div.col-xs-3
-        +abilityType(attackModel)
+        +abilityType(attackModel)(id!="ability-"+attributes.id)
     div.col-xs-3
         p VS
     div.col-xs-3
-        +defenseType(defenseModel)
+        +defenseType(defenseModel)(id!="defense-"+attributes.id)
 
 mixin section(name)
     section.tab-pane(id=name,class!=attributes.class)

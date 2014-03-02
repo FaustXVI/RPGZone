@@ -8,7 +8,7 @@ describe('Homepage', function () {
 
         beforeEach(function () {
             reset();
-            browser.get('http://localhost:8080');
+            browser.get('http://localhost:8000');
         });
 
         it('should go to creation page', function () {
@@ -16,7 +16,7 @@ describe('Homepage', function () {
             expect(createButton).toBeDefined();
             expect(createButton).not.toBeNull();
             createButton.click();
-            expect(browser.getCurrentUrl()).toEqual("http://localhost:8080/perso.html");
+            expect(browser.getCurrentUrl()).toEqual("http://localhost:8000/perso.html");
         });
     });
 

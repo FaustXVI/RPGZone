@@ -10,7 +10,7 @@ module.exports = function (grunt) {
         express: {
             test: {
                 options: {
-                    port: 8080,
+                    port: 8000,
                     server: path.resolve('./server-config')
                 }
             }

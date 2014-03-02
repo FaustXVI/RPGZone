@@ -1,5 +1,5 @@
 mixin dice(model)
-    select.form-control(data-ng-model=model)
+    select.form-control(data-ng-model=model,id!=attributes.id)
         option(value="") #{t('character.select')}
         option 4
         option 6
@@ -8,14 +8,15 @@ mixin dice(model)
         option 12
 
 mixin powerType(model)
-    select.form-control(data-ng-model=model)
+    select.form-control(data-ng-model=model,id!=attributes.id)
         option(value="") #{t('character.select')}
         option(value="atWill") #{t('character.powers.atWill')}
         option(value="encounter") #{t('character.powers.encounter')}
         option(value="daily") #{t('character.powers.daily')}
 
 mixin abilityType(model)
-    select.form-control(data-ng-model=model,multiple!=attributes.multiple,)
+    select.form-control(data-ng-model=model,multiple!=attributes.multiple,id!=attributes.id)
+        option(value="") #{t('character.select')}
         option(value="strength") #{t('character.ability.strength')}
         option(value="constitution") #{t('character.ability.constitution')}
         option(value="dexterity") #{t('character.ability.dexterity')}
@@ -24,7 +25,7 @@ mixin abilityType(model)
         option(value="charisma") #{t('character.ability.charisma')}
 
 mixin defenseType(model)
-    select.form-control(data-ng-model=model)
+    select.form-control(data-ng-model=model,id!=attributes.id)
         option(value="") #{t('character.select')}
         option(value="armor") #{t('character.defenses.armor')}
         option(value="fortitude") #{t('character.defenses.fortitude')}
@@ -32,7 +33,7 @@ mixin defenseType(model)
         option(value="will") #{t('character.defenses.will')}
 
 mixin position(model)
-    select.form-control(data-ng-model=model)
+    select.form-control(data-ng-model=model,id!=attributes.id)
         option(value="weapon") #{t('character.equipments.weapon')}
         option(value="armor") #{t('character.equipments.armor')}
         option(value="arms") #{t('character.equipments.arms')}

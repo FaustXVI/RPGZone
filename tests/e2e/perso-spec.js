@@ -4,6 +4,38 @@ function waitForAngular() {
     protractor.getInstance().waitForAngular();
 }
 
+function SelectFactory(id) {
+    this.id = id;
+
+    this.create = function (listName, index) {
+        return new Select(this.id + "-" + listName + "-" + index);
+    };
+
+}
+
+function Select(name) {
+
+    this.name = name;
+
+    this.fill = function (index) {
+        var options = element.all(by.css("#" + this.name + " option"));
+        options.count().then(function (nb) {
+            options.get(index % nb).click();
+            waitForAngular();
+        });
+    };
+
+    this.verify = function (index) {
+        var name = this.name;
+        var options = element.all(by.css("#" + name + " option"));
+        options.count().then(function (nb) {
+            expect(element(by.id(name)).getAttribute("value"))
+                .toEqual(options.get(index % nb).getAttribute("value"));
+        });
+    };
+
+}
+
 describe('Character creation page', function () {
 
     var saveButton;
@@ -11,7 +43,7 @@ describe('Character creation page', function () {
 
     beforeEach(function () {
         reset();
-        browser.get('http://localhost:8080/perso.html');
+        browser.get('http://localhost:8000/perso.html');
         waitForAngular();
         saveButton = element(by.id("saveButton"));
     });
@@ -27,7 +59,7 @@ describe('Character creation page', function () {
         waitForAngular();
         expect(saveButton.isDisplayed()).toBe(false, "Save button is still display");
         var currentUrl = browser.getCurrentUrl();
-        expect(currentUrl).toMatch(/http:\/\/localhost:8080\/perso.html\?id=[0-9a-f]+/, "Url should change to match character id");
+        expect(currentUrl).toMatch(/http:\/\/localhost:8000\/perso.html\?id=[0-9a-f]+/, "Url should change to match character id");
         currentUrl.then(function (res) {
             browser.get(res);
             clickSectionButton();
@@ -55,25 +87,38 @@ describe('Character creation page', function () {
         var i;
         for (i = 0; i < fields.length; i++) {
             field = fields[i];
-            sendKeysToEmptyField(field, "" + i);
+            if (typeof field === 'object') {
+                field.fill(i);
+            } else {
+                sendKeysToEmptyField(field, "" + i);
+            }
         }
         checkSaveButton(function () {
             for (i = 0; i < fields.length; i++) {
                 field = fields[i];
-                checkFieldSaved(field, "" + i);
+                if (typeof field === 'object') {
+                    field.verify(i);
+                } else {
+                    checkFieldSaved(field, "" + i);
+                }
             }
         });
     }
 
-    function checkListFields(listName, featFields) {
+    function checkListFields(listName, elementFields) {
         var number = 2;
         var fields = [];
         for (var i = 0; i < number; i++) {
             element(by.id(listName + "Add")).click();
             waitForAngular();
             protractor.getInstance().waitForAngular();
-            for (var j = 0; j < featFields.length; j++) {
-                fields.push(listName + "-" + featFields[j] + "-" + i);
+            for (var j = 0; j < elementFields.length; j++) {
+                var elementField = elementFields[j];
+                if (typeof elementField === 'object') {
+                    fields.push(elementField.create(listName, i));
+                } else {
+                    fields.push(listName + "-" + elementField + "-" + i);
+                }
             }
         }
         checkFields(fields);
@@ -201,7 +246,7 @@ describe('Character creation page', function () {
         }
 
         function checkDamagePower(type) {
-            var powerFields = ["name", "numberDice", "text"];
+            var powerFields = ["name", "numberDice", "text", new SelectFactory("ability-vs"), new SelectFactory("defense-vs"), new SelectFactory("ability-modifier")];
             checkPowerTextField(type, powerFields);
         }
 
