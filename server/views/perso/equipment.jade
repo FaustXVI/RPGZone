@@ -9,7 +9,7 @@ mixin equipmentSimple(equipmentList)
             div.form-group
                 label.col-xs-3 #{t('character.equipments.position')}
                 div.col-xs-9
-                    +position("equipment.position")
+                    +position("equipment.position")(id="position-equipment-{{$index}}")
             section
                 h3 #{t('character.powers.title')}
                 +equipmentPowerSimple("equipment.powers")
@@ -26,17 +26,17 @@ mixin equipmentPowerSimple(powerList)
             div.form-group
                 label.col-xs-3 #{t('character.powers.name')}
                 div.col-xs-7
-                    input.form-control(type="text",data-ng-model="power.name")
+                    input.form-control(type="text",data-ng-model="power.name",id="name-power-{{$index}}-equipment-{{$parent.$index}}")
                 +removeButton(powerList,"power")
             div.form-group
                 label.col-xs-3 #{t('character.powers.type')}
                 div.col-xs-9
-                    +powerType(model)
+                    +powerType("power.type")(id="type-power-{{$index}}-equipment-{{$parent.$index}}")
             if block
                 block
             div.form-group
-                textarea.form-control(data-ng-model="power.text")
-    button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")")
+                textarea.form-control(data-ng-model="power.text",id="text-power-{{$index}}-equipment-{{$parent.$index}}")
+    button.btn.btn-success(type="button",data-ng-click="addElementToList("+powerList+")",id="add-power-equipment-{{$index}}")
         span.glyphicon.glyphicon-plus
 
 +section("equipments")

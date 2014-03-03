@@ -4,6 +4,28 @@ function waitForAngular() {
     protractor.getInstance().waitForAngular();
 }
 
+function fillFields(fields, offset) {
+    offset = (typeof offset === "undefined") ? 0 : offset;
+    for (var i = 0; i < fields.length; i++) {
+        var field = fields[i];
+        if (typeof field === 'object') {
+            field.fill(i + offset);
+        } else {
+            sendKeysToEmptyField(field, "" + (i + offset));
+        }
+    }
+}
+
+function sendKeysToEmptyField(model, value) {
+    var field = element(by.id(model));
+    checkNoValue(field);
+    field.sendKeys(value);
+}
+
+function checkNoValue(field) {
+    expect(field.getAttribute("value")).toEqual("", field + " value should be null");
+}
+
 function SelectFactory(id) {
     this.id = id;
 
@@ -11,6 +33,23 @@ function SelectFactory(id) {
         return new Select(this.id + "-" + listName + "-" + index);
     };
 
+}
+
+function verifyFields(fields, offset) {
+    offset = (typeof offset === "undefined") ? 0 : offset;
+    for (var i = 0; i < fields.length; i++) {
+        var field = fields[i];
+        if (typeof field === 'object') {
+            field.verify(i + offset);
+        } else {
+            checkFieldSaved(field, "" + (i + offset));
+        }
+    }
+}
+
+function checkFieldSaved(model, value) {
+    var field = element(by.id(model));
+    expect(field.getAttribute("value")).toEqual(value, model + " value should be " + value);
 }
 
 function Select(name) {
@@ -32,6 +71,42 @@ function Select(name) {
             expect(element(by.id(name)).getAttribute("value"))
                 .toEqual(options.get(index % nb).getAttribute("value"));
         });
+    };
+
+}
+
+function PowerFactory(id, addButtonId) {
+    this.id = id;
+
+    this.create = function (listName, index) {
+        console.log(addButtonId + "-" + index);
+        var names = [];
+        for (var i = 0; i < 2; i++) {
+            element(by.id(addButtonId + "-" + index)).click();
+            waitForAngular();
+            names.push(this.id + "-" + i + "-" + listName + "-" + index);
+        }
+        return new Power(names);
+    };
+
+}
+
+function Power(names) {
+
+    this.names = names;
+
+    this.fill = function (index) {
+        for (var i = 0; i < this.names.length; i++) {
+            var name = this.names[i];
+            fillFields(["name-" + name, "text-" + name, new Select("type-" + name)], index + i);
+        }
+    };
+
+    this.verify = function (index) {
+        for (var i = 0; i < this.names.length; i++) {
+            var name = this.names[i];
+            verifyFields(["name-" + name, "text-" + name, new Select("type-" + name)], index + i);
+        }
     };
 
 }
@@ -67,41 +142,10 @@ describe('Character creation page', function () {
         });
     }
 
-    function checkFieldSaved(model, value) {
-        var field = element(by.id(model));
-        expect(field.getAttribute("value")).toEqual(value, model + " value should be " + value);
-    }
-
-    function checkNoValue(field) {
-        expect(field.getAttribute("value")).toEqual("", field + " value should be null");
-    }
-
-    function sendKeysToEmptyField(model, value) {
-        var field = element(by.id(model));
-        checkNoValue(field);
-        field.sendKeys(value);
-    }
-
     function checkFields(fields) {
-        var field;
-        var i;
-        for (i = 0; i < fields.length; i++) {
-            field = fields[i];
-            if (typeof field === 'object') {
-                field.fill(i);
-            } else {
-                sendKeysToEmptyField(field, "" + i);
-            }
-        }
+        fillFields(fields);
         checkSaveButton(function () {
-            for (i = 0; i < fields.length; i++) {
-                field = fields[i];
-                if (typeof field === 'object') {
-                    field.verify(i);
-                } else {
-                    checkFieldSaved(field, "" + i);
-                }
-            }
+            verifyFields(fields);
         });
     }
 
@@ -111,7 +155,6 @@ describe('Character creation page', function () {
         for (var i = 0; i < number; i++) {
             element(by.id(listName + "Add")).click();
             waitForAngular();
-            protractor.getInstance().waitForAngular();
             for (var j = 0; j < elementFields.length; j++) {
                 var elementField = elementFields[j];
                 if (typeof elementField === 'object') {
@@ -298,9 +341,9 @@ describe('Character creation page', function () {
 
 
         it('should have a equipment list', function () {
-            var featFields = ["name", "text"];
+            var equipmentFields = ["name", "text", new SelectFactory("position"), new PowerFactory("power", "add-power-equipment")];
             var listName = "equipment";
-            checkListFields(listName, featFields);
+            checkListFields(listName, equipmentFields);
         });
 
     });
