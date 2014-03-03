@@ -73,3 +73,9 @@ nav.navbar-fixed-top > div {
         width: 50%; /* 6 columns */
     }
 }
+
+.btn.active.switch {
+    background-color: #D2322D;
+    border-color: #AC2925;
+    color: #FFFFFF;
+}

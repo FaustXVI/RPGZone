@@ -34,8 +34,9 @@ mixin power(powerList,nameSpace)
 mixin powerUseable(powerList,nameSpace)
     +power(powerList,nameSpace)
         div
-            button.btn.btn-primary(type="button",ng-model="power.used",data-ng-show="!power.used",btn-checkbox) #{t('character.powers.used')}
-            button.btn.btn-danger(type="button",ng-model="power.used",data-ng-show="power.used",data-btn-checkbox) #{t('character.powers.reset')}
+            button.btn.btn-primary.switch(type="button",data-btn-checkbox,data-ng-model="power.used")
+                span(data-ng-show="!power.used") #{t('character.powers.used')}
+                span(data-ng-show="power.used") #{t('character.powers.reset')}
 
 +section("powers")
     section
