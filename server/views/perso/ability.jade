@@ -4,7 +4,7 @@ mixin carac(carac)
         div.col-xs-3
             input.form-control(type="number",data-ng-model="character.ability."+carac,id=carac)
         span.col-xs-3(data-ng-bind="calculateMod(character.ability."+carac+")")
-        span.col-xs-3(data-ng-bind="calculateTotalMod(character.ability."+carac+", character.id.level)")
+        span.col-xs-3(data-ng-bind="calculateTotalMod(character.ability."+carac+")")
 
 +section("ability")
     div.form-group

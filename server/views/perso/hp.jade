@@ -11,10 +11,10 @@ mixin state(label)
     +hp("max")
     div.form-group.text-danger
         p.col-xs-3 #{t('character.hp.bloodied')}
-        p.col-xs-9.text-right(data-ng-bind="calculateBloodied(character.hp.max)")
+        p.col-xs-9.text-right(data-ng-bind="calculateBloodied()")
     div.form-group.text-info
         p.col-xs-3 #{t('character.hp.surge')}
-        p.col-xs-9.text-right(data-ng-bind="calculateSurge(character.hp.max)")
+        p.col-xs-9.text-right(data-ng-bind="calculateSurge()")
     section.form-group
         h2 #{t('character.state.title')}
         div.btn-group.btn-group-justified

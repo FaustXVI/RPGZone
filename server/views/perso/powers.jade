@@ -23,7 +23,7 @@ mixin power(powerList,nameSpace)
             div.col-xs-3
                 input.form-control(type="number",data-ng-model="power.numberDice",id=nameSpace + "-numberDice-{{$index}}")
             span.col-xs-3
-                | [A] + {{calculateSumMod(character,power.damagesModifiers)}}
+                | [A] + {{calculateSumMod(power.damagesModifiers)}}
         div.form-group
             label.col-xs-3 #{t('character.powers.damagesModifiers')}
             div.col-xs-9
