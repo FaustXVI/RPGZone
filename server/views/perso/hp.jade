@@ -1,6 +1,11 @@
 mixin hp(label)
     +entry("hp."+label,label)(type="number")
 
+mixin state(label)
+    div.btn-group
+        button.btn.btn-primary.switch(type="button",data-btn-checkbox,data-ng-model="character.state."+label)
+            span #{t('character.state.'+label)}
+
 +section("hp")
     +hp("current")
     +hp("max")
@@ -10,3 +15,25 @@ mixin hp(label)
     div.form-group.text-info
         p.col-xs-3 #{t('character.hp.surge')}
         p.col-xs-9.text-right(data-ng-bind="calculateSurge(character.hp.max)")
+    section.form-group
+        h2 #{t('character.state.title')}
+        div.btn-group.btn-group-justified
+            +state("blinded")
+            +state("dazed")
+            +state("deafened")
+            +state("dominated")
+        div.btn-group.btn-group-justified
+            +state("dying")
+            +state("helpless")
+            +state("immobilized")
+            +state("marked")
+        div.btn-group.btn-group-justified
+            +state("petrified")
+            +state("prone")
+            +state("restrained")
+            +state("slowed")
+        div.btn-group.btn-group-justified
+            +state("stunned")
+            +state("surprised")
+            +state("unconscious")
+            +state("weakened")

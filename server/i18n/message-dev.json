@@ -36,11 +36,30 @@
             "charisma": "Charisme"
         },
         "hp": {
-            "title": "Points de vie",
+            "title": "Santé",
             "current": "HP",
             "max": "HP max",
             "bloodied": "Péril",
             "surge": "Restorations"
+        },
+        "state": {
+            "title": "États",
+            "blinded": "Aveuglé",
+            "dazed": "Hébété",
+            "deafened": "Assourdi",
+            "dominated": "Dominé",
+            "dying": "Mourant",
+            "helpless": "Sans défense",
+            "immobilized": "Immobilisé",
+            "marked": "Marqué",
+            "petrified": "Pétrifié",
+            "prone": "À terre",
+            "restrained": "Maîtrisé",
+            "slowed": "Ralenti",
+            "stunned": "Étourdi",
+            "surprised": "Surpris",
+            "unconscious": "Inconscient",
+            "weakened": "Affaibli"
         },
         "defenses": {
             "title": "Défenses",

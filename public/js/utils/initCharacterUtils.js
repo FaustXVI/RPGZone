@@ -4,7 +4,7 @@ initCharacterUtils.factory('initCharacterUtils', ['arrayUtils', 'objectUtils', f
     return {
         init: function (character) {
             arrayUtils.initArrays(character, ["notes", "feats", "equipments"]);
-            objectUtils.initObjects(character, ["ability", "defenses", "skills", "id", "movement", "hp", "powers"]);
+            objectUtils.initObjects(character, ["ability", "defenses", "skills", "id", "movement", "hp", "state", "powers"]);
             objectUtils.initObjects(character.skills, [
                 "acrobatics",
                 "arcana",
