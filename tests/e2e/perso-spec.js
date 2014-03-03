@@ -79,7 +79,6 @@ function PowerFactory(id, addButtonId) {
     this.id = id;
 
     this.create = function (listName, index) {
-        console.log(addButtonId + "-" + index);
         var names = [];
         for (var i = 0; i < 2; i++) {
             element(by.id(addButtonId + "-" + index)).click();
@@ -142,14 +141,17 @@ describe('Character creation page', function () {
         });
     }
 
-    function checkFields(fields) {
+    function checkFields(fields, beforeVerify) {
         fillFields(fields);
         checkSaveButton(function () {
+            if (beforeVerify) {
+                beforeVerify();
+            }
             verifyFields(fields);
         });
     }
 
-    function checkListFields(listName, elementFields) {
+    function checkListFields(listName, elementFields, beforeVerify) {
         var number = 2;
         var fields = [];
         for (var i = 0; i < number; i++) {
@@ -164,7 +166,13 @@ describe('Character creation page', function () {
                 }
             }
         }
-        checkFields(fields);
+        expect(element.all(by.css("#" + listName + "List > li")).count()).toEqual(number, "Element not added");
+        checkFields(fields, beforeVerify);
+//        FIXME comprendre pourquoi tout ça n'est pas executé correctement
+//        element(by.id(listName + "Delete-0")).click();
+//        element(by.id("validate")).click();
+//        waitForAngular();
+//        expect(element.all(by.css("#" + listName + "List > li")).count()).toEqual(number-1, "Element not deleted");
     }
 
     describe('id section', function () {
@@ -285,7 +293,10 @@ describe('Character creation page', function () {
         function checkPowerTextField(type, powerFields) {
             element(by.id(type + "Show")).click();
             waitForAngular();
-            checkListFields(type, powerFields);
+            checkListFields(type, powerFields, function () {
+                element(by.id(type + "Show")).click();
+                waitForAngular();
+            });
         }
 
         function checkDamagePower(type) {

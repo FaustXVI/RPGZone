@@ -1,11 +1,11 @@
 mixin equipmentSimple(equipmentList)
-    ul.list-unstyled
+    ul.list-unstyled#equipmentList
         li.col-xs-12(data-ng-repeat="equipment in "+equipmentList)
             div.form-group
                 label.col-xs-3 #{t('character.equipments.name')}
                 div.col-xs-7
                     input.form-control(type="text",data-ng-model="equipment.name",id="equipment-name-{{$index}}")
-                +removeButton(equipmentList,"equipment")
+                +removeButton(equipmentList,"equipment")(id="equipmentDelete-{{$index}}")
             div.form-group
                 label.col-xs-3 #{t('character.equipments.position')}
                 div.col-xs-9

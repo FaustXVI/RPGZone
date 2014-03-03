@@ -2,6 +2,6 @@ div.modal-header
     h3 #{t('modal.confirmListDeletion')}
 div.modal-body
     p {{ item.name }}
-div.modal-footer
+div.modal-footer#confirmModal
     button#validate.btn.btn-primary(ng-click="ok()") #{t('modal.ok')}
     button#invalidate.btn.btn-danger(ng-click="cancel()") #{t('modal.cancel')}

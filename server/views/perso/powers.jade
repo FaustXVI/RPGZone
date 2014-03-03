@@ -1,11 +1,11 @@
 mixin powerSimple(powerList,nameSpace)
-    ul.list-unstyled
+    ul.list-unstyled(id=nameSpace + "List")
         li.col-xs-12(data-ng-repeat="power in "+powerList)
             div.form-group
                 label.col-xs-3 #{t('character.powers.name')}
                 div.col-xs-7
                     input.form-control(type="text",data-ng-model="power.name",id=nameSpace + "-name-{{$index}}")
-                +removeButton(powerList,"power")
+                +removeButton(powerList,"power")(id=nameSpace + "Delete-{{$index}}")
             if block
                 block
             div.form-group

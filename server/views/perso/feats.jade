@@ -1,11 +1,11 @@
 mixin featSimple(featList)
-    ul.list-unstyled
+    ul.list-unstyled#featList
         li.col-xs-12(data-ng-repeat="feat in "+featList)
             div.form-group
                 label.col-xs-3 #{t('character.feats.name')}
                 div.col-xs-7
                     input.form-control(type="text",data-ng-model="feat.name",id="feat-name-{{$index}}")
-                +removeButton(featList,"feat")
+                +removeButton(featList,"feat")(id="featDelete-{{$index}}")
             div.form-group
                 textarea.form-control(data-ng-model="feat.text",id="feat-text-{{$index}}")
     button.btn.btn-success(type="button",data-ng-click="addElementToList("+featList+")",id="featAdd")

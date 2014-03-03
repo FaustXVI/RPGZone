@@ -27,6 +27,6 @@ mixin section(name)
         block
 
 mixin removeButton(list,elt)
-    button.btn.btn-danger.pull-right(type="button",data-ng-click="open("+list+","+elt+")")
+    button.btn.btn-danger.pull-right(type="button",data-ng-click="open("+list+","+elt+")",id!=attributes.id)
         span.glyphicon.glyphicon-remove
 
