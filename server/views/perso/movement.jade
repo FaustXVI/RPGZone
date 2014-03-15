@@ -1,5 +1,5 @@
 mixin movement(label)
-    +entry("movement."+label,label)(type="number")
+    +entry("movement."+label)&attributes(attributes,{id:label,type:"number"})
 
 +section("movement")
     +movement("speed")

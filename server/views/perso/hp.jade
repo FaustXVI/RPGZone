@@ -1,6 +1,6 @@
 mixin hp(label)
     - var mapping = "hp."+label
-    +calculableEntry(mapping,label)&attributes(attributes)
+    +calculableEntry(mapping)&attributes(attributes,{id:label})
 
 mixin state(label)
     div.btn-group
@@ -11,9 +11,6 @@ mixin state(label)
     +hp("current")(red-if-bloodied)
     +hp("temporary")
     +hp("max")
-    div.form-group.text-danger
-        p.col-xs-3 #{t('character.hp.bloodied')}
-        p.col-xs-9.text-right(data-ng-bind="calculateBloodied()")
     div.form-group.text-info
         p.col-xs-3 #{t('character.hp.surge')}
         p.col-xs-9.text-right(data-ng-bind="calculateSurge()")

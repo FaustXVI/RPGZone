@@ -1,25 +1,28 @@
 include selects
 
-mixin entry(name,id)
+mixin entry(name)
     div.form-group
         label.col-xs-3(for=name) #{t('character.'+name)}
         div.col-xs-9
-            input.form-control(type!=attributes.type?attributes.type:"text",name=name,data-ng-model="character."+name,id=id)
+            - attributes.type = attributes.type?attributes.type:"text";
+            - attributes.name = name;
+            - attributes["data-ng-model"] = "character."+name;
+            input.form-control&attributes(attributes)
 
-mixin calculableEntry(name,id)
+mixin calculableEntry(name)
     div.form-group
         label.col-xs-3(for=name) #{t('character.'+name)}
         div.col-xs-3
             - attributes.type = "number";
-            - attributes.id = id;
             - attributes.name = name;
             - attributes["data-ng-model"] = "character."+name;
+            - var model = attributes["data-ng-model"];
             input.form-control&attributes(attributes)
         div.col-xs-3
-            button.btn.btn-success(type="button",data-ng-click="addTo(\"character."+name+"\")",id=id + "Add")
+            button.btn.btn-success(type="button",data-ng-click="addTo(\""+model+"\")",id!=attributes.id + "Add")
                 span.glyphicon.glyphicon-plus
         div.col-xs-3
-            button.btn.btn-danger(type="button",data-ng-click="substractTo(\"character."+name+"\")",id=id + "Sub")
+            button.btn.btn-danger(type="button",data-ng-click="substractTo(\""+model+"\")",id!=attributes.id + "Sub")
                 span.glyphicon.glyphicon-minus
 
 mixin dices(numberModel,valueModel)

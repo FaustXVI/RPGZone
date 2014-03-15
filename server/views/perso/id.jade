@@ -1,5 +1,5 @@
 mixin id(label)
-    +entry("id."+label,label)(type!=attributes.type)
+    +entry("id."+label)&attributes(attributes,{id:label})
 
 +section("id")(class="active")
     +id("name")

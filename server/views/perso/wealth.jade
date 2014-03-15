@@ -1,5 +1,5 @@
 mixin wealth(label)
-    +entry("wealth."+label,label)(type="number")
+    +entry("wealth."+label)&attributes(attributes,{id:label,type:"number"})
 
 +section("wealth")
     +wealth("gold")
