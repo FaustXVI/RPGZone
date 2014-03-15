@@ -183,7 +183,7 @@ describe('Character creation page', function () {
         });
 
         it('should have a text field for each id field', function () {
-            var fields = ["name", "class", "race", "level", "gender", "diety", "alignment", "paragonPath", "playerName"];
+            var fields = ["name", "class", "race", "level", "gender", "diety", "alignment", "paragonPath", "epicPath", "playerName"];
             checkFields(fields);
         });
 
