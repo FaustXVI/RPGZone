@@ -38,6 +38,7 @@
         "hp": {
             "title": "Santé",
             "current": "HP",
+            "temporary": "HP temporaires",
             "max": "HP max",
             "bloodied": "Péril",
             "surge": "Restorations"
@@ -142,6 +143,7 @@
     },
     "modal": {
         "confirmListDeletion": "Voulez vous vraiment supprimer cet élément ?",
+        "enterValue": "Entrez une valeur",
         "ok": "Oui",
         "cancel": "Non"
     }

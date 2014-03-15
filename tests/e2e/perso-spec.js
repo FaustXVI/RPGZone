@@ -225,7 +225,7 @@ describe('Character creation page', function () {
         });
 
         it('should have a text field for current and max hp', function () {
-            var fields = ["current", "max"];
+            var fields = ["current", "temporary", "max"];
             checkFields(fields);
         });
 
