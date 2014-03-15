@@ -19,7 +19,6 @@ html(xmlns="http://www.w3.org/1999/xhtml")
             nav#sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role="navigation")
                 ul.nav.nav-pills.nav-stacked
                     +tab("id")(class="active")
-                    +tab("initiative")
                     +tab("movement")
                     +tab("ability")
                     +tab("hp")(red-if-bloodied)
@@ -35,7 +34,6 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                     div.tab-content
                         include mixins/template
                         include perso/id
-                        include perso/initiative
                         include perso/movement
                         include perso/ability
                         include perso/hp

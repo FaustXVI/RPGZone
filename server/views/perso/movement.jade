@@ -2,4 +2,8 @@ mixin movement(label)
     +entry("movement."+label)&attributes(attributes,{id:label,type:"number"})
 
 +section("movement")
+    div.form-group
+        label.col-xs-3(for=name) #{t('character.movement.initiative')}
+        div.col-xs-9
+            span(data-ng-bind="calculateHalfLevel(character.id.level) + calculateMod(character.ability.dexterity)")
     +movement("speed")
