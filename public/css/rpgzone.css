@@ -33,6 +33,11 @@ nav.navbar-fixed-top > div {
     margin-top: 5px;
 }
 
+.bloodied {
+    color: red !important;
+    border-color: red;
+}
+
 @media screen and (max-width: 767px) {
     .row-offcanvas {
         position: relative;

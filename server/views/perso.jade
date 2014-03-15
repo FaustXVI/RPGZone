@@ -1,6 +1,6 @@
 mixin tab(name)
     li(class!=attributes.class)
-        a(data-toggle="tab",href="#"+name,id=name+"Button") #{t('character.'+name+'.title')}
+        a&attributes(attributes)(data-toggle="tab",href="#"+name,id=name+"Button") #{t('character.'+name+'.title')}
 
 doctype html
 html(xmlns="http://www.w3.org/1999/xhtml")
@@ -22,7 +22,7 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                     +tab("initiative")
                     +tab("movement")
                     +tab("ability")
-                    +tab("hp")
+                    +tab("hp")(red-if-bloodied)
                     +tab("defenses")
                     +tab("skills")
                     +tab("powers")

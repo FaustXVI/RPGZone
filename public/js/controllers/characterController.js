@@ -10,6 +10,23 @@ rpgZone.directive('focusMe', function ($timeout) {
     };
 });
 
+rpgZone.directive('redIfBloodied', function () {
+    return {
+        link: function (scope, element) {
+            scope.$watch("character.hp.current", function () {
+                    if (scope.character.hp) {
+                        if (scope.calculateBloodied() > scope.character.hp.current) {
+                            element.addClass("bloodied");
+                        } else {
+                            element.removeClass("bloodied");
+                        }
+                    }
+                }
+            )
+        }
+    };
+});
+
 rpgZone.controller('characterController', function ($scope, $location, characterService, initCharacterUtils, calculator, arrayUtils, $modal, $parse) {
 
     var loadCurrentCharacter = function () {

@@ -1,6 +1,6 @@
 mixin hp(label)
     - var mapping = "hp."+label
-    +calculableEntry(mapping,label)
+    +calculableEntry(mapping,label)&attributes(attributes)
 
 mixin state(label)
     div.btn-group
@@ -8,7 +8,7 @@ mixin state(label)
             span #{t('character.state.'+label)}
 
 +section("hp")
-    +hp("current")
+    +hp("current")(red-if-bloodied)
     +hp("temporary")
     +hp("max")
     div.form-group.text-danger
@@ -39,3 +39,4 @@ mixin state(label)
             +state("surprised")
             +state("unconscious")
             +state("weakened")
+
