@@ -1,6 +1,16 @@
 var rpgZone = angular.module('characterController', ['characterService', 'initCharacterUtils', 'arrayUtils', 'calculator', 'ui.bootstrap']);
 
-rpgZone.controller('characterController', function ($scope, $location, characterService, initCharacterUtils, calculator, arrayUtils, $modal) {
+rpgZone.directive('focusMe', function ($timeout) {
+    return {
+        link: function (scope, element) {
+            $timeout(function () {
+                element.focus();
+            }, 100);
+        }
+    };
+});
+
+rpgZone.controller('characterController', function ($scope, $location, characterService, initCharacterUtils, calculator, arrayUtils, $modal, $parse) {
 
     var loadCurrentCharacter = function () {
         if ($location.search() && $location.search().id) {
@@ -43,6 +53,54 @@ rpgZone.controller('characterController', function ($scope, $location, character
             arrayUtils.removeElementToList(list, elt);
         })
 
+    };
+
+    $scope.addTo = function (elt) {
+        var modalInstance = $modal.open({
+            templateUrl: "modals/enterValue.html",
+            controller: ValueModalInstanceCtrl
+        });
+
+        modalInstance.result.then(function (valueToAdd) {
+            var modelGetter = $parse(elt);
+            var modelSetter = modelGetter.assign;
+            var previousValue = modelGetter($scope) || 0;
+            var added = valueToAdd || 0;
+            modelSetter($scope, previousValue + added);
+            $scope.form.$setDirty();
+        });
+
+    };
+
+
+    $scope.substractTo = function (elt) {
+        var modalInstance = $modal.open({
+            templateUrl: "modals/enterValue.html",
+            controller: ValueModalInstanceCtrl
+        });
+
+        modalInstance.result.then(function (valueToSubtract) {
+            var modelGetter = $parse(elt);
+            var modelSetter = modelGetter.assign;
+            var previousValue = modelGetter($scope) || 0;
+            var substracted = valueToSubtract || 0;
+            modelSetter($scope, previousValue - substracted);
+            $scope.form.$setDirty();
+        })
+
+    };
+
+    var ValueModalInstanceCtrl = function ($scope, $modalInstance) {
+
+        $scope.input = {};
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.input.value);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
     };
 
     var ModalInstanceCtrl = function ($scope, $modalInstance, item) {

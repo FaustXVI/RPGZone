@@ -27,8 +27,8 @@ calculator.factory('calculator', function () {
             }
         },
         calculateHalfLevel: function () {
-            var level = this.character.id.level;
-            if (level) {
+            if (this.character.id) {
+                var level = this.valueOrZero(this.character.id.level);
                 return Math.floor(level / 2);
             } else {
                 return 0;
@@ -42,16 +42,16 @@ calculator.factory('calculator', function () {
             }
         },
         calculateBloodied: function () {
-            var max = this.character.hp.max;
-            if (max) {
+            if (this.character.hp) {
+                var max = this.valueOrZero(this.character.hp.max);
                 return Math.floor(max / 2);
             } else {
                 return 0;
             }
         },
         calculateSurge: function () {
-            var max = this.character.hp.max;
-            if (max) {
+            if (this.character.hp) {
+                var max = this.valueOrZero(this.character.hp.max);
                 return Math.floor(max / 4);
             } else {
                 return 0;

@@ -6,6 +6,18 @@ mixin entry(name,id)
         div.col-xs-9
             input.form-control(type!=attributes.type?attributes.type:"text",name=name,data-ng-model="character."+name,id=id)
 
+mixin calculableEntry(name,id)
+    div.form-group
+        label.col-xs-3(for=name) #{t('character.'+name)}
+        div.col-xs-3
+            input.form-control(type="number",name=name,data-ng-model="character."+name,id=id)
+        div.col-xs-3
+            button.btn.btn-success(type="button",data-ng-click="addTo(\"character."+name+"\")",id=id + "Add")
+                span.glyphicon.glyphicon-plus
+        div.col-xs-3
+            button.btn.btn-danger(type="button",data-ng-click="substractTo(\"character."+name+"\")",id=id + "Sub")
+                span.glyphicon.glyphicon-minus
+
 mixin dices(numberModel,valueModel)
     div.col-xs-3
         input.form-control(type="number",data-ng-model=numberModel)

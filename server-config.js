@@ -34,6 +34,7 @@ app.get('/', render('index'));
 app.get('/index.html', render('index'));
 app.get('/perso.html', render('perso'));
 app.get('/modals/confirmDeleteFromList.html', render('modals/confirmDeleteFromList'));
+app.get('/modals/enterValue.html', render('modals/enterValue'));
 app.get('/characters', characters.all);
 app.get('/characters/:id', characters.get);
 app.post('/characters', characters.add);

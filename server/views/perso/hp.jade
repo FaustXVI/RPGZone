@@ -1,5 +1,6 @@
 mixin hp(label)
-    +entry("hp."+label,label)(type="number")
+    - var mapping = "hp."+label
+    +calculableEntry(mapping,label)
 
 mixin state(label)
     div.btn-group
