@@ -107,6 +107,12 @@ rpgZone.controller('characterController', function ($scope, $location, character
 
     };
 
+    $scope.useSurge = function () {
+        $scope.character.hp.current += $scope.calculateSurge();
+        $scope.character.hp.currentSurge -= 1;
+        $scope.form.$setDirty();
+    };
+
     var ValueModalInstanceCtrl = function ($scope, $modalInstance) {
 
         $scope.input = {};

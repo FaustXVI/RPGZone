@@ -11,9 +11,17 @@ mixin state(label)
     +hp("current")(red-if-bloodied)
     +hp("temporary")
     +hp("max")
-    div.form-group.text-info
-        p.col-xs-3 #{t('character.hp.surge')}
-        p.col-xs-9.text-right(data-ng-bind="calculateSurge()")
+    div.form-group
+        label.col-xs-3(for="currentSurge") #{t('character.hp.surge')}
+        div.col-xs-3
+            input.form-control(type="number",data-ng-model="character.hp.currentSurge",name="currentSurge",id="currentSurge")
+        div.col-xs-1
+            span. /
+        div.col-xs-3
+            input.form-control(type="number",data-ng-model="character.hp.maxSurge",name="maxSurge",id="maxSurge")
+        div.col-xs-2
+            button.btn.btn-success(type="button",data-ng-click="useSurge()",id="useSurge")
+                span.glyphicon.glyphicon-heart
     section.form-group
         h2 #{t('character.state.title')}
         div.btn-group.btn-group-justified

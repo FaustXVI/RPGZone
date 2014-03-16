@@ -142,7 +142,9 @@
     "modal": {
         "confirmListDeletion": "Voulez vous vraiment supprimer cet élément ?",
         "enterValue": "Entrez une valeur",
-        "ok": "Oui",
-        "cancel": "Non"
+        "validate": "Valider",
+        "cancel": "Annuler",
+        "yes": "Oui",
+        "no": "Non"
     }
 }
