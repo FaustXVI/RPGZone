@@ -15,6 +15,7 @@
             "alignment": "Alignement",
             "diety": "Divinité",
             "paragonPath": "Voie parangonique",
+            "epicPath": "Voie épique",
             "playerName": "Nom du joueur"
         },
         "movement": {
