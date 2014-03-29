@@ -22,12 +22,22 @@ mixin power(powerList,nameSpace)
             label.col-xs-3 #{t('character.powers.damages')}
             div.col-xs-3
                 input.form-control(type="number",data-ng-model="power.numberDice",id=nameSpace + "-numberDice-{{$index}}")
-            span.col-xs-3
-                | [A] + {{calculateSumMod(power.damagesModifiers)}}
+            div.col-xs-3
+                +diceOrWeapon("power.diceType")(id="dice-type-"+nameSpace + "-{{$index}}")
         div.form-group
             label.col-xs-3 #{t('character.powers.damagesModifiers')}
             div.col-xs-9
                 +abilityType("power.damagesModifiers")(multiple="multiple",id="ability-modifier-"+nameSpace + "-{{$index}}")
+        div.form-group
+            label.col-xs-3 #{t('character.powers.modifiersBonus')}
+            div.col-xs-9
+                span.col-xs-3
+                    | {{calculateSumMod(power.damagesModifiers)}}
+        div.form-group
+            label.col-xs-3 #{t('character.powers.damagesModifiers')}
+            div.col-xs-9
+                +damageType("power.damagesType")(id="damage-type-"+nameSpace + "-{{$index}}")
+
         if block
             block
 

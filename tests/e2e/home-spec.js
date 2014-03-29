@@ -28,7 +28,7 @@ describe('Homepage', function () {
                 {"id": {name: "Jim"}},
                 {"id": {name: "Sarah"}}
             ]);
-            browser.get('http://localhost:8080');
+            browser.get('http://localhost:8000');
         });
 
         it('should show all characters', function () {

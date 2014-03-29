@@ -7,6 +7,30 @@ mixin dice(model)
         option 10
         option 12
 
+mixin diceOrWeapon(model)
+    select.form-control(data-ng-model=model,id!=attributes.id)
+        option(value="") #{t('character.select')}
+        option [#{t('weapon.damage')}]
+        option 4
+        option 6
+        option 8
+        option 10
+        option 12
+
+mixin damageType(model)
+    select.form-control(data-ng-model=model,id!=attributes.id)
+        option(value="") #{t('damage.type.pain')}
+        option #{t('damage.type.acid')}
+        option #{t('damage.type.cold')}
+        option #{t('damage.type.fire')}
+        option #{t('damage.type.force')}
+        option #{t('damage.type.lightning')}
+        option #{t('damage.type.necrotic')}
+        option #{t('damage.type.poison')}
+        option #{t('damage.type.psychic')}
+        option #{t('damage.type.radiant')}
+        option #{t('damage.type.thunder')}
+
 mixin powerType(model)
     select.form-control(data-ng-model=model,id!=attributes.id)
         option(value="") #{t('character.select')}

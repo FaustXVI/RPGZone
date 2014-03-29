@@ -300,7 +300,8 @@ describe('Character creation page', function () {
         }
 
         function checkDamagePower(type) {
-            var powerFields = ["name", "numberDice", "text", new SelectFactory("ability-vs"), new SelectFactory("defense-vs"), new SelectFactory("ability-modifier")];
+            var powerFields = ["name", "numberDice", "text", new SelectFactory("ability-vs"), new SelectFactory("dice-type"),
+                new SelectFactory("defense-vs"), new SelectFactory("ability-modifier"), new SelectFactory("damage-type")];
             checkPowerTextField(type, powerFields);
         }
 

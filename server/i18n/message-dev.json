@@ -1,4 +1,7 @@
 {
+    "weapon": {
+        "damage": "A"
+    },
     "home": {
         "title": "Personnages DD",
         "button": "Nouveau personnage"
@@ -105,7 +108,8 @@
             "reset": "Reset",
             "damages": "Dégats",
             "attack": "Attaque",
-            "damagesModifiers": "Modificateur de dégats"
+            "damagesModifiers": "Modificateur de dégats",
+            "modifiersBonus": "Bonus des modificateurs"
         },
         "wealth": {
             "title": "Richesses",
@@ -147,5 +151,20 @@
         "cancel": "Annuler",
         "yes": "Oui",
         "no": "Non"
+    },
+    "damage": {
+        "type": {
+            "pain": "Douleur",
+            "acid": "Acide",
+            "cold": "Froid",
+            "fire": "Feu",
+            "force": "Force",
+            "lightning": "Éclair",
+            "necrotic": "Nécrotique",
+            "poison": "Poison",
+            "psychic": "Psychique",
+            "radiant": "Radiant",
+            "thunder": "Tonnerre"
+        }
     }
 }
