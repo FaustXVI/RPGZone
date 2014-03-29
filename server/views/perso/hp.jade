@@ -2,9 +2,15 @@ mixin hp(label)
     - var mapping = "hp."+label
     +calculableEntry(mapping)&attributes(attributes,{id:label})
 
+
 mixin state(label)
+    li.col-xs-3
+        a.btn.btn-primary.switch(type="button",data-btn-checkbox,data-ng-model="character.state."+label)
+            span #{t('character.state.'+label)}
+
+mixin stateIfTrue(label)
     div.btn-group
-        button.btn.btn-primary.switch(type="button",data-btn-checkbox,data-ng-model="character.state."+label)
+        a.btn.btn-primary.switch(type="button",data-btn-checkbox,data-ng-model="character.state."+label,data-ng-show="character.state."+label)
             span #{t('character.state.'+label)}
 
 +section("hp")
@@ -21,26 +27,41 @@ mixin state(label)
         label.col-xs-1(for="maxSurge") /
         div.col-xs-3
             input.form-control(type="number",data-ng-model="character.hp.maxSurge",name="maxSurge",id="maxSurge")
-    section.form-group
-        h2 #{t('character.state.title')}
-        div.btn-group.btn-group-justified
-            +state("blinded")
-            +state("dazed")
-            +state("deafened")
-            +state("dominated")
-        div.btn-group.btn-group-justified
-            +state("dying")
-            +state("helpless")
-            +state("immobilized")
-            +state("marked")
-        div.btn-group.btn-group-justified
-            +state("petrified")
-            +state("prone")
-            +state("restrained")
-            +state("slowed")
-        div.btn-group.btn-group-justified
-            +state("stunned")
-            +state("surprised")
-            +state("unconscious")
-            +state("weakened")
-
+    section
+        div.form-group.dropdown
+            button(type="button",class="btn btn-primary dropdown-toggle col-xs-12",data-toggle="dropdown")
+                | #{t('character.state.title')}
+            ul.dropdown-menu.col-xs-12
+                +state("blinded")
+                +state("dazed")
+                +state("deafened")
+                +state("dominated")
+                +state("dying")
+                +state("helpless")
+                +state("immobilized")
+                +state("marked")
+                +state("petrified")
+                +state("prone")
+                +state("restrained")
+                +state("slowed")
+                +state("stunned")
+                +state("surprised")
+                +state("unconscious")
+                +state("weakened")
+        div.form-group
+            +stateIfTrue("blinded")
+            +stateIfTrue("dazed")
+            +stateIfTrue("deafened")
+            +stateIfTrue("dominated")
+            +stateIfTrue("dying")
+            +stateIfTrue("helpless")
+            +stateIfTrue("immobilized")
+            +stateIfTrue("marked")
+            +stateIfTrue("petrified")
+            +stateIfTrue("prone")
+            +stateIfTrue("restrained")
+            +stateIfTrue("slowed")
+            +stateIfTrue("stunned")
+            +stateIfTrue("surprised")
+            +stateIfTrue("unconscious")
+            +stateIfTrue("weakened")
