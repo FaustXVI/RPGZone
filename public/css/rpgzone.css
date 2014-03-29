@@ -38,6 +38,11 @@ nav.navbar-fixed-top > div {
     border-color: red;
 }
 
+.dropdown-menu li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 @media screen and (max-width: 767px) {
     .row-offcanvas {
         position: relative;
